@@ -15,6 +15,6 @@
     pfetch
 
     # TODO: make a shared neovim config for both vps and laptop
-    nvim
+    neovim
   ];
 }

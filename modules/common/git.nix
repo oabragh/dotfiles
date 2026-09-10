@@ -16,7 +16,7 @@ in
       };
       init.defaultBranch = "main";
       pull.rebase = true;
-      core.editor = if (cfg.host.name == "machine") then "nvim" else "vim";
+      core.editor = "nvim";
       color.ui = true;
       column.ui = "auto";
       rerere.enabled = true;
