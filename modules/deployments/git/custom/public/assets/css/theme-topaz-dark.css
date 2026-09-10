@@ -1,0 +1,741 @@
+/*
+  Created by @root:oabragh.dev
+  Credit or a link back is appreciated, but it's up to you :)
+*/
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../fonts/jetbrains-mono-400.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url("../fonts/jetbrains-mono-600.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url("../fonts/jetbrains-mono-700.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('../fonts/Exo2-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+  src: url('../fonts/Exo2-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url('../fonts/Exo2-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url('../fonts/Exo2-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Exo 2';
+  font-style: italic;
+  font-weight: 400;
+  font-display: block;
+  src: url('../fonts/Exo2-Italic.ttf') format('truetype');
+}
+
+/* Braun Cathode Syntax Highlighting (Chroma) */
+.chroma .bp { color: #7ea39b; }
+.chroma .c, .chroma .c1, .chroma .ch, .chroma .cm, .chroma .cs { color: #7d7265; font-style: italic; }
+.chroma .cp { color: #df8e44; }
+.chroma .cpf { color: #7ea39b; }
+.chroma .dl { color: #8fa876; }
+.chroma .gd { color: #ffd8d4; background-color: #3b1a17; }
+.chroma .ge { font-style: italic; }
+.chroma .gh { color: #d97757; font-weight: bold; }
+.chroma .gi { color: #e5dec9; background-color: #262e1e; }
+.chroma .go { color: #7d7265; }
+.chroma .gp { color: #9e9282; }
+.chroma .gr, .chroma .gt { color: #d95d52; }
+.chroma .gu { color: #df8e44; font-weight: bold; }
+.chroma .il, .chroma .m, .chroma .mb, .chroma .mf, .chroma .mh, .chroma .mi, .chroma .mo { color: #b48ead; }
+.chroma .k, .chroma .kd, .chroma .kn, .chroma .kp, .chroma .kr { color: #d95d52; }
+.chroma .kc { color: #b48ead; }
+.chroma .kt { color: #c79d63; }
+.chroma .n, .chroma .nn { color: #e5dec9; }
+.chroma .na { color: #df8e44; }
+.chroma .nb { color: #7ea39b; }
+.chroma .nc { color: #c79d63; }
+.chroma .nd { color: #df8e44; }
+.chroma .ne { color: #d95d52; }
+.chroma .nf { color: #df8e44; }
+.chroma .ni { color: #d97757; }
+.chroma .nl { color: #8fa876; }
+.chroma .no { color: #b48ead; }
+.chroma .nt { color: #c79d63; }
+.chroma .nv, .chroma .vc, .chroma .vg, .chroma .vi { color: #e5dec9; }
+.chroma .nx { color: #e5dec9; }
+.chroma .o, .chroma .ow { color: #d97757; }
+.chroma .p { color: #9e9282; }
+.chroma .s, .chroma .s1, .chroma .s2, .chroma .sb, .chroma .sd, .chroma .sh { color: #8fa876; }
+.chroma .sa, .chroma .sc, .chroma .si, .chroma .sx { color: #d97757; }
+.chroma .se, .chroma .ss { color: #d97757; }
+.chroma .sr { color: #7ea39b; }
+.chroma .w { color: #26221f; }
+
+/* Braun Cathode Syntax Highlighting (CodeMirror) */
+.CodeMirror.cm-s-default .cm-property, .CodeMirror.cm-s-paper .cm-property { color: #df8e44; }
+.CodeMirror.cm-s-default .cm-header, .CodeMirror.cm-s-paper .cm-header { color: #7ea39b; }
+.CodeMirror.cm-s-default .cm-quote, .CodeMirror.cm-s-paper .cm-quote { color: #df8e44; }
+.CodeMirror.cm-s-default .cm-keyword, .CodeMirror.cm-s-paper .cm-keyword { color: #d95d52; }
+.CodeMirror.cm-s-default .cm-atom, .CodeMirror.cm-s-paper .cm-atom { color: #b48ead; }
+.CodeMirror.cm-s-default .cm-number, .CodeMirror.cm-s-paper .cm-number { color: #b48ead; }
+.CodeMirror.cm-s-default .cm-def, .CodeMirror.cm-s-paper .cm-def { color: #e5dec9; }
+.CodeMirror.cm-s-default .cm-variable-2, .CodeMirror.cm-s-paper .cm-variable-2 { color: #7ea39b; }
+.CodeMirror.cm-s-default .cm-variable-3, .CodeMirror.cm-s-paper .cm-variable-3 { color: #df8e44; }
+.CodeMirror.cm-s-default .cm-comment, .CodeMirror.cm-s-paper .cm-comment { color: #7d7265; font-style: italic; }
+.CodeMirror.cm-s-default .cm-string, .CodeMirror.cm-s-paper .cm-string { color: #8fa876; }
+.CodeMirror.cm-s-default .cm-string-2, .CodeMirror.cm-s-paper .cm-string-2 { color: #d97757; }
+.CodeMirror.cm-s-default .cm-meta, .CodeMirror.cm-s-paper .cm-meta,
+.CodeMirror.cm-s-default .cm-qualifier, .CodeMirror.cm-s-paper .cm-qualifier { color: #d97757; }
+.CodeMirror.cm-s-default .cm-builtin, .CodeMirror.cm-s-paper .cm-builtin { color: #7ea39b; }
+.CodeMirror.cm-s-default .cm-bracket, .CodeMirror.cm-s-paper .cm-bracket { color: #e5dec9; }
+.CodeMirror.cm-s-default .cm-tag, .CodeMirror.cm-s-paper .cm-tag { color: #c79d63; }
+.CodeMirror.cm-s-default .cm-attribute, .CodeMirror.cm-s-paper .cm-attribute { color: #df8e44; }
+.CodeMirror.cm-s-default .cm-hr, .CodeMirror.cm-s-paper .cm-hr { color: #7d7265; }
+.CodeMirror.cm-s-default .cm-url, .CodeMirror.cm-s-paper .cm-url { color: #7ea39b; }
+.CodeMirror.cm-s-default .cm-link, .CodeMirror.cm-s-paper .cm-link { color: #b48ead; }
+.CodeMirror.cm-s-default .cm-error, .CodeMirror.cm-s-paper .cm-error { color: #d95d52; }
+
+.markup [src$="#gh-light-mode-only"],
+.markup [src$="#light-mode-only"],
+.markup [href$="#gh-light-mode-only"],
+.markup [href$="#light-mode-only"] {
+  display: none;
+}
+.markup [src$="#gh-dark-mode-only"],
+.markup [src$="#dark-mode-only"],
+.markup [href$="#gh-dark-mode-only"],
+.markup [href$="#dark-mode-only"] {
+  display: unset;
+}
+
+:root {
+  --fonts-proportional:
+    "Exo 2", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif !important;
+  --fonts-monospace:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace !important;
+
+  /* Braun Cathode Scale */
+  --cathode-950: #131110;
+  --cathode-900: #151311;
+  --cathode-850: #1a1715;
+  --cathode-800: #1f1b18;
+  --cathode-750: #211d1a;
+  --cathode-700: #26221f;
+  --cathode-650: #2b2622;
+  --cathode-600: #36302a;
+  --cathode-550: #3b342f;
+  --cathode-500: #4a423b;
+  --cathode-450: #584f46;
+  --cathode-400: #635b51;
+  --cathode-350: #7d7265;
+  --cathode-300: #9e9282;
+  --cathode-250: #b3a797;
+  --cathode-200: #c7bdae;
+  --cathode-150: #d6ccc0;
+  --cathode-100: #e5dec9;
+  --cathode-50:  #f2ece0;
+
+  --is-dark-theme: true;
+
+  --color-primary: #df8e44;
+  --color-primary-contrast: #131110;
+  --color-primary-dark-1: oklch(0.75 0.13 60);
+  --color-primary-dark-2: oklch(0.75 0.13 60);
+  --color-primary-dark-3: oklch(0.82 0.09 60);
+  --color-primary-dark-4: oklch(0.82 0.09 60);
+  --color-primary-dark-5: oklch(0.89 0.05 60);
+  --color-primary-dark-6: oklch(0.89 0.05 60);
+  --color-primary-dark-7: oklch(0.95 0.02 60);
+  --color-primary-light-1: oklch(0.62 0.15 60);
+  --color-primary-light-2: oklch(0.55 0.15 60);
+  --color-primary-light-3: oklch(0.48 0.14 60);
+  --color-primary-light-4: oklch(0.42 0.12 60);
+  --color-primary-light-5: oklch(0.36 0.10 60);
+  --color-primary-light-6: oklch(0.31 0.08 60);
+  --color-primary-light-7: oklch(0.26 0.06 60);
+
+  --color-primary-alpha-10: rgba(223, 142, 68, 0.10);
+  --color-primary-alpha-20: rgba(223, 142, 68, 0.20);
+  --color-primary-alpha-30: rgba(223, 142, 68, 0.30);
+  --color-primary-alpha-40: rgba(223, 142, 68, 0.40);
+  --color-primary-alpha-50: rgba(223, 142, 68, 0.50);
+  --color-primary-alpha-60: rgba(223, 142, 68, 0.60);
+  --color-primary-alpha-70: rgba(223, 142, 68, 0.70);
+  --color-primary-alpha-80: rgba(223, 142, 68, 0.80);
+  --color-primary-alpha-90: rgba(223, 142, 68, 0.90);
+
+  --color-primary-hover: #ea9f58;
+  --color-primary-active: #bc7330;
+
+  --color-secondary: var(--cathode-700);
+  --color-secondary-dark-1: var(--cathode-550);
+  --color-secondary-dark-2: var(--cathode-500);
+  --color-secondary-dark-3: var(--cathode-450);
+  --color-secondary-dark-4: var(--cathode-400);
+  --color-secondary-dark-5: var(--cathode-350);
+  --color-secondary-dark-6: var(--cathode-300);
+  --color-secondary-dark-7: var(--cathode-300);
+  --color-secondary-dark-8: var(--cathode-250);
+  --color-secondary-dark-9: var(--cathode-200);
+  --color-secondary-dark-10: var(--cathode-150);
+  --color-secondary-dark-11: var(--cathode-100);
+  --color-secondary-dark-12: var(--cathode-100);
+  --color-secondary-dark-13: var(--cathode-100);
+  --color-secondary-light-1: var(--cathode-650);
+  --color-secondary-light-2: var(--cathode-700);
+  --color-secondary-light-3: var(--cathode-750);
+  --color-secondary-light-4: var(--cathode-800);
+
+  --color-secondary-alpha-10: rgba(43, 38, 34, 0.15);
+  --color-secondary-alpha-20: rgba(43, 38, 34, 0.30);
+  --color-secondary-alpha-30: rgba(43, 38, 34, 0.45);
+  --color-secondary-alpha-40: rgba(43, 38, 34, 0.60);
+  --color-secondary-alpha-50: rgba(43, 38, 34, 0.75);
+  --color-secondary-alpha-60: rgba(43, 38, 34, 0.85);
+  --color-secondary-alpha-70: rgba(43, 38, 34, 0.90);
+  --color-secondary-alpha-80: rgba(43, 38, 34, 0.95);
+  --color-secondary-alpha-90: #2b2622;
+
+  --color-secondary-hover: #2b2622;
+  --color-secondary-active: #36302a;
+
+  --color-body: var(--cathode-900);
+  --color-box-header: var(--cathode-700);
+  --color-box-body: var(--cathode-800);
+  --color-box-body-highlight: var(--cathode-650);
+  --color-text-dark: #ffffff;
+  --color-text: var(--cathode-100);
+  --color-text-light: var(--cathode-200);
+  --color-text-light-1: var(--cathode-200);
+  --color-text-light-2: var(--cathode-300);
+  --color-text-light-3: var(--cathode-350);
+  --color-footer: var(--cathode-950);
+  --color-timeline: var(--cathode-600);
+  --color-input-text: var(--cathode-100);
+  --color-input-background: var(--cathode-650);
+  --color-input-toggle-background: var(--cathode-650);
+  --color-input-border: var(--cathode-550);
+  --color-input-border-hover: var(--cathode-400);
+  --color-header-wrapper: var(--cathode-850);
+  --color-header-wrapper-transparent: rgba(26, 23, 21, 0);
+  --color-light: rgba(0, 0, 0, 0.28);
+  --color-light-mimic-enabled: rgba(0, 0, 0, calc(40 / 255 * 222 / 255 / var(--opacity-disabled)));
+  --color-light-border: rgba(229, 222, 201, 0.12);
+
+  --color-hover: rgba(229, 222, 201, 0.08);
+  --color-active: var(--cathode-650);
+
+  --color-menu: var(--cathode-700);
+  --color-card: var(--cathode-700);
+  --fancy-card-bg: var(--cathode-650);
+  --fancy-card-border: var(--cathode-600);
+  --color-markup-table-row: rgba(255, 255, 255, 0.03);
+  --color-markup-code-block: var(--cathode-900);
+  --color-markup-code-inline: var(--cathode-650);
+
+  --color-button: var(--cathode-650);
+  --color-button-hover: #36302a;
+  --color-button-active: #3b342f;
+  --color-code-bg: var(--cathode-800);
+  --color-shadow: rgba(12, 10, 9, 0.75);
+  --color-secondary-bg: var(--cathode-700);
+  --color-text-focus: #ffffff;
+  --color-expand-button: var(--cathode-600);
+  --color-placeholder-text: var(--color-text-light-3);
+  --color-editor-line-highlight: var(--cathode-700);
+  --color-project-board-bg: var(--color-secondary-light-3);
+  --color-project-board-dark-label: var(--color-text-light-3);
+  --color-caret: var(--color-text);
+
+  --color-reaction-bg: rgba(255, 255, 255, 0.07);
+  --color-reaction-active-bg: rgba(223, 142, 68, 0.25);
+  --color-reaction-hover-bg: rgba(223, 142, 68, 0.15);
+
+  --color-tooltip-text: #e5dec9;
+  --color-tooltip-bg: #131110f0;
+
+  --color-nav-bg: #2d1e16;
+  --color-nav-hover-bg: #38251b;
+  --color-secondary-nav-bg: var(--color-body);
+
+  --color-label-text: #e5dec9;
+  --color-label-bg: var(--cathode-650);
+  --color-label-hover-bg: #36302a;
+  --color-label-active-bg: #3b342f;
+  --color-label-bg-alt: var(--cathode-600);
+  --color-accent: var(--color-primary-light-1);
+  --color-small-accent: var(--color-primary-light-5);
+  --color-highlight-fg: var(--color-primary-light-4);
+  --color-highlight-bg: var(--color-primary-alpha-20);
+  --color-overlay-backdrop: rgba(19, 17, 16, 0.75);
+
+  --color-selection-bg: #2b2622;
+  --color-selection-fg: #e5dec9;
+  --checkerboard-color-1: #211d1a;
+  --checkerboard-color-2: #1a1715;
+
+  --color-console-fg: #e5dec9;
+  --color-console-fg-subtle: #9e9282;
+  --color-console-bg: #131110;
+  --color-console-border: #26221f;
+  --color-console-hover-bg: rgba(255, 255, 255, 0.08);
+  --color-console-active-bg: #211d1a;
+  --color-console-menu-bg: #1a1715;
+  --color-console-menu-border: #2b2622;
+
+  --color-diff-removed-word-bg: #572521;
+  --color-diff-added-word-bg: #334024;
+  --color-diff-removed-row-bg: #3b1a17;
+  --color-diff-moved-row-bg: #382c1a;
+  --color-diff-added-row-bg: #262e1e;
+  --color-diff-removed-row-border: #d95d52;
+  --color-diff-moved-row-border: #c79d63;
+  --color-diff-added-row-border: #8fa876;
+  --color-diff-inactive: var(--cathode-650);
+
+  --color-error-border: #d95d52;
+  --color-error-bg: #3b1a17;
+  --color-error-bg-hover: #4d221e;
+  --color-error-bg-active: #2e1412;
+  --color-error-text: #ffd8d4;
+
+  --color-success-border: #262e1e;
+  --color-success-bg: #1f2717;
+  --color-success-text: #8fa876;
+  --color-warning-border: #382c1a;
+  --color-warning-bg: #2c2214;
+  --color-warning-text: #c79d63;
+  --color-info-border: #1f2e2b;
+  --color-info-bg: #192523;
+  --color-info-text: #7ea39b;
+
+  --color-red: #d95d52;
+  --color-orange: #df8e44;
+  --color-yellow: #c79d63;
+  --color-olive: #8fa876;
+  --color-green: #8fa876;
+  --color-teal: #7ea39b;
+  --color-blue: #7ea39b;
+  --color-violet: #b48ead;
+  --color-purple: #b48ead;
+  --color-pink: #d97757;
+  --color-brown: #d97757;
+  --color-grey: var(--cathode-400);
+  --color-black: #131110;
+  --color-red-light: #e27167;
+  --color-orange-light: #ea9f58;
+  --color-yellow-light: #d6af78;
+  --color-olive-light: #a3bc8c;
+  --color-green-light: #a3bc8c;
+  --color-teal-light: #92b6af;
+  --color-blue-light: #92b6af;
+  --color-violet-light: #c5a3be;
+  --color-purple-light: #c5a3be;
+  --color-pink-light: #e38c6e;
+  --color-brown-light: #e38c6e;
+  --color-grey-light: var(--cathode-300);
+  --color-black-light: #1a1715;
+  --color-red-dark-1: #c74d42;
+  --color-orange-dark-1: #cc7d36;
+  --color-yellow-dark-1: #b58d55;
+  --color-olive-dark-1: #7d9667;
+  --color-green-dark-1: #7d9667;
+  --color-teal-dark-1: #6d9189;
+  --color-blue-dark-1: #6d9189;
+  --color-violet-dark-1: #a17b9b;
+  --color-purple-dark-1: #a17b9b;
+  --color-pink-dark-1: #c76747;
+  --color-brown-dark-1: #c76747;
+  --color-black-dark-1: #0d0c0b;
+  --color-red-dark-2: #b53f35;
+  --color-orange-dark-2: #b86d2a;
+  --color-yellow-dark-2: #a37d47;
+  --color-olive-dark-2: #6c8458;
+  --color-green-dark-2: #6c8458;
+  --color-teal-dark-2: #5c7e77;
+  --color-blue-dark-2: #5c7e77;
+  --color-violet-dark-2: #8f6989;
+  --color-purple-dark-2: #8f6989;
+  --color-pink-dark-2: #b55839;
+  --color-brown-dark-2: #b55839;
+  --color-black-dark-2: #070606;
+
+  --color-gold: #c79d63;
+  --color-white: #ffffff;
+  --color-pure-black: #000000;
+
+  --color-ansi-black: #1a1715;
+  --color-ansi-red: #d95d52;
+  --color-ansi-green: #8fa876;
+  --color-ansi-yellow: #c79d63;
+  --color-ansi-blue: #7ea39b;
+  --color-ansi-magenta: #b48ead;
+  --color-ansi-cyan: #df8e44;
+  --color-ansi-white: #e5dec9;
+  --color-ansi-bright-black: #36302a;
+  --color-ansi-bright-red: #e27167;
+  --color-ansi-bright-green: #a3bc8c;
+  --color-ansi-bright-yellow: #d6af78;
+  --color-ansi-bright-blue: #92b6af;
+  --color-ansi-bright-magenta: #c5a3be;
+  --color-ansi-bright-cyan: #ea9f58;
+  --color-ansi-bright-white: #f2ece0;
+
+  --color-red-badge: #d95d52;
+  --color-red-badge-bg: rgba(217, 93, 82, 0.15);
+  --color-red-badge-hover-bg: rgba(217, 93, 82, 0.25);
+  --color-green-badge: #8fa876;
+  --color-green-badge-bg: rgba(143, 168, 118, 0.15);
+  --color-green-badge-hover-bg: rgba(143, 168, 118, 0.25);
+  --color-yellow-badge: #c79d63;
+  --color-yellow-badge-bg: rgba(199, 157, 99, 0.15);
+  --color-yellow-badge-hover-bg: rgba(199, 157, 99, 0.25);
+  --color-orange-badge: #df8e44;
+  --color-orange-badge-bg: rgba(223, 142, 68, 0.15);
+  --color-orange-badge-hover-bg: rgba(223, 142, 68, 0.25);
+
+  --thin-lightness: 0.68;
+  --regular-chroma: 0.19;
+  --color-thin-green: #8fa876;
+  --color-thin-red: #d95d52;
+  --color-thin-purple: #b48ead;
+  --color-thin-orange: #df8e44;
+  --thin-lightness-highlight: 0.75;
+  --color-thin-red-highlight: #e27167;
+  --bg-lightness: 0.26;
+  --bg-chroma: 0.05;
+  --color-danger-bg: #3b1a17;
+
+  --color-indicator-offline: #635b51;
+  --color-indicator-offline-20: rgba(99, 91, 81, 0.25);
+  --color-indicator-idle: #c79d63;
+  --color-indicator-idle-20: rgba(199, 157, 99, 0.25);
+  --color-indicator-active: #df8e44;
+  --color-indicator-active-20: rgba(223, 142, 68, 0.25);
+
+  accent-color: var(--color-accent);
+  color-scheme: dark;
+}
+
+a {
+  color: #df8e44;
+  transition: color 0.15s ease;
+}
+a:hover {
+  color: #ea9f58;
+}
+a.muted {
+  color: var(--color-text-light);
+}
+a.muted:hover {
+  color: var(--color-text);
+}
+
+.ui.secondary.vertical.menu {
+  border-radius: 0.28571429rem !important;
+  overflow: hidden;
+}
+
+.ui.secondary.menu .item {
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.ui.secondary.menu .item:hover {
+  background-color: var(--color-hover) !important;
+  color: #ffffff !important;
+}
+
+.ui.secondary.menu .active.item {
+  background-color: var(--color-active) !important;
+  color: #ffffff !important;
+}
+
+.ui.secondary.pointing.menu .item:hover {
+  border-color: var(--cathode-500) !important;
+  color: #ffffff !important;
+}
+
+.ui.secondary.pointing.menu .active.item {
+  border-color: var(--color-primary) !important;
+  color: var(--color-primary) !important;
+}
+
+.ui.button {
+  background-color: var(--color-button);
+  color: var(--color-text);
+  border: 1px solid var(--cathode-600);
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.ui.button:hover {
+  background-color: var(--color-button-hover) !important;
+  border-color: var(--cathode-500) !important;
+  color: #ffffff !important;
+}
+
+.ui.button:active {
+  background-color: var(--color-button-active) !important;
+  border-color: var(--cathode-450) !important;
+}
+
+.ui.primary.button {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary-hover) !important;
+  color: #131110 !important;
+}
+
+.ui.primary.button:hover {
+  background-color: var(--color-primary-hover) !important;
+  border-color: #f0b071 !important;
+  color: #070606 !important;
+}
+
+.ui.primary.button:active {
+  background-color: var(--color-primary-active) !important;
+}
+
+.ui.basic.primary.button.item,
+.ui.basic.button {
+  background-color: transparent !important;
+  border: 1px solid var(--cathode-600) !important;
+  color: var(--color-text) !important;
+  box-shadow: none !important;
+}
+
+.ui.basic.button:hover {
+  background-color: var(--color-hover) !important;
+  border-color: var(--cathode-500) !important;
+  color: #ffffff !important;
+}
+
+.ui.basic.button:active {
+  background-color: var(--color-active) !important;
+}
+
+.ui.basic.red.button,
+.ui.red.button {
+  background-color: var(--color-error-bg) !important;
+  color: #ffd8d4 !important;
+  border: 1px solid var(--color-error-border) !important;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.ui.basic.red.button:hover,
+.ui.red.button:hover {
+  background-color: var(--color-error-bg-hover) !important;
+  border-color: #e27167 !important;
+  color: #ffffff !important;
+}
+
+.ui.basic.red.button:active,
+.ui.red.button:active {
+  background-color: var(--color-error-bg-active) !important;
+}
+
+.ui.dropdown .menu > .item {
+  color: var(--color-text) !important;
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+
+.ui.dropdown .menu > .item:hover,
+.ui.dropdown .menu .selected.item {
+  background-color: var(--color-hover) !important;
+  color: #ffffff !important;
+}
+
+.ui.dropdown .menu > .active.item {
+  background-color: var(--color-active) !important;
+  font-weight: 600 !important;
+}
+
+tr:has(> td.lines-num):has(> td.lines-code):hover {
+  background-color: var(--color-hover) !important;
+}
+
+.ui.input input:hover,
+.ui.form input:hover,
+.ui.form textarea:hover,
+select:hover {
+  border-color: var(--color-input-border-hover) !important;
+}
+
+.ui.input input:focus,
+.ui.form input:focus,
+.ui.form textarea:focus,
+select:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 2px var(--color-primary-alpha-20) !important;
+}
+
+.ui.label {
+  background-color: var(--color-label-bg);
+  color: var(--color-label-text);
+  border: 1px solid var(--cathode-600);
+  transition: background-color 0.12s ease, border-color 0.12s ease;
+}
+
+.ui.label:hover,
+a.ui.label:hover {
+  background-color: var(--color-label-hover-bg) !important;
+  border-color: var(--cathode-500) !important;
+}
+
+.ui.red.label.notification_count,
+.ui.primary.label,
+.ui.primary.labels .label {
+  background-color: var(--color-primary-light-3) !important;
+  color: #131110 !important;
+  border: none !important;
+}
+
+.ui.basic.labels .primary.label,
+.ui.ui.ui.basic.primary.label {
+  color: var(--color-primary) !important;
+  border-color: var(--cathode-600) !important;
+}
+
+.ui.yellow.label.pending-label {
+  background: var(--color-warning-bg) !important;
+  color: var(--color-warning-text) !important;
+}
+
+.ui.labeled.icon.buttons > .button > .icon,
+.ui.labeled.icon.button > .icon {
+  background-color: var(--color-shadow) !important;
+}
+
+#review-box .review-comments-counter {
+  background-color: var(--color-shadow) !important;
+  color: var(--color-white) !important;
+  margin-inline-start: 0.5em;
+}
+
+i.grey.icon.icon.icon.icon {
+  color: var(--cathode-350) !important;
+}
+
+strong.attention-important, svg.attention-important {
+  color: var(--color-violet);
+}
+
+strong.attention-note, svg.attention-note {
+  color: var(--color-blue);
+}
+
+strong.attention-caution, svg.attention-caution {
+  color: var(--color-red);
+}
+
+/* Change 1: white foreground preserved on cathode navbar */
+#navbar .navbar-left > a.item,
+#navbar .navbar-right > a.item,
+#navbar .navbar-right details.dropdown > summary,
+#navbar .navbar-mobile-right > a.item,
+#navbar .navbar-mobile-right > button.item {
+  color: #ffffff !important;
+}
+
+#navbar .navbar-left > a.item:hover,
+#navbar .navbar-right > a.item:hover,
+#navbar .navbar-right details.dropdown > summary:hover,
+#navbar .navbar-mobile-right > a.item:hover,
+#navbar .navbar-mobile-right > button.item:hover {
+  background-color: var(--color-nav-hover-bg) !important;
+}
+
+#navbar .navbar-left > a.item.active,
+#navbar .navbar-right > a.item.active,
+#navbar .navbar-mobile-right > a.item.active,
+#navbar .navbar-mobile-right > button.item.active {
+  background-color: #452b1e !important;
+}
+
+/* Change 2: soft elevation on dropdown popups */
+.ui.dropdown .menu,
+.tippy-box[data-theme="menu"],
+details.dropdown > .content {
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  border: 1px solid var(--cathode-600) !important;
+  box-shadow: 0 8px 24px -4px #0c0a09b0 !important;
+}
+
+/* Change 3: footer hidden */
+footer.page-footer {
+  display: none !important;
+}
+
+/* Change 4: hide explore tabs and add margin */
+.page-content.explore.repositories > overflow-menu.secondary-nav {
+  display: none !important;
+}
+.page-content.explore.repositories > .ui.container {
+  margin-top: 1rem;
+}
+
+/* Change 5: hide scrollbar on chromium */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Change 6: sticky code header with opaque background */
+.non-diff-file-content > h4.file-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+  background-color: var(--color-box-header) !important;
+}
+
+/* Change 7: gap between the tabs */
+overflow-menu .overflow-menu-items {
+  gap: 0.25rem;
+}

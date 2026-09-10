@@ -1,0 +1,28 @@
+[project]
+name = "hello_world"
+version = "0.1.0"
+description = "Simple hello world"
+authors = [{ name = "Omar Abragh", email = "oabragh@outlook.com" }]
+readme = "README.md"
+requires-python = ">=3.14"
+
+dependencies = []
+
+[dependency-groups]
+dev = []
+
+[tool.ruff]
+line-length = 88
+target-version = "py314"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = []
+
+[tool.pyright]
+typeCheckingMode = "standard"
+venvPath = "."
+venv = ".venv"
+
+[project.scripts]
+hello_world = "hello_world.__main__:main"

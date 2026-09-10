@@ -1,0 +1,9 @@
+[package]
+name = "hello_world"
+description = "Simple hello world"
+version = "0.1.0"
+edition = "2024"
+# repository = "https://github.com/oabragh/..."
+# keywords = []
+
+[dependencies]

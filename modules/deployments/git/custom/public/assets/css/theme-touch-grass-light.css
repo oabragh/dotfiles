@@ -1,0 +1,727 @@
+/*
+  Created by @root:oabragh.dev
+  Credit or a link back is appreciated, but it's up to you :)
+*/
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../fonts/jetbrains-mono-400.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url("../fonts/jetbrains-mono-600.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url("../fonts/jetbrains-mono-700.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('../fonts/Exo2-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+  src: url('../fonts/Exo2-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url('../fonts/Exo2-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url('../fonts/Exo2-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Exo 2';
+  font-style: italic;
+  font-weight: 400;
+  font-display: block;
+  src: url('../fonts/Exo2-Italic.ttf') format('truetype');
+}
+
+.chroma .bp {
+  color: #999;
+}
+
+.chroma .c,
+.chroma .c1,
+.chroma .ch {
+  color: #6a737d;
+}
+
+.chroma .cm {
+  color: #998;
+}
+
+.chroma .cp {
+  color: #109295;
+}
+
+.chroma .cpf {
+  color: #4c4dbc;
+}
+
+.chroma .cs {
+  color: #999;
+}
+
+.chroma .dl {
+  color: #106303;
+}
+
+.chroma .gd {
+  color: #000;
+  background-color: #fdd;
+}
+
+.chroma .ge {
+  color: #000;
+}
+
+.chroma .gh {
+  color: #999;
+}
+
+.chroma .gi {
+  color: #000;
+  background-color: #dfd;
+}
+
+.chroma .go {
+  color: #888;
+}
+
+.chroma .gp {
+  color: #555;
+}
+
+.chroma .gr,
+.chroma .gt {
+  color: #a00;
+}
+
+.chroma .gu {
+  color: #aaa;
+}
+
+.chroma .il {
+  color: #099;
+}
+
+.chroma .k,
+.chroma .kc,
+.chroma .kd,
+.chroma .kn,
+.chroma .kp,
+.chroma .kr {
+  color: #d73a49;
+}
+
+.chroma .kt {
+  color: #458;
+}
+
+.chroma .m,
+.chroma .mb,
+.chroma .mf,
+.chroma .mh,
+.chroma .mi,
+.chroma .mo {
+  color: #099;
+}
+
+.chroma .na {
+  color: #d73a49;
+}
+
+.chroma .nb {
+  color: #005cc5;
+}
+
+.chroma .nc {
+  color: #458;
+}
+
+.chroma .nd {
+  color: #3c5d5d;
+}
+
+.chroma .ne {
+  color: #900;
+}
+
+.chroma .nf {
+  color: #005cc5;
+}
+
+.chroma .ni {
+  color: #6f42c1;
+}
+
+.chroma .nl {
+  color: #900;
+}
+
+.chroma .nn {
+  color: #555;
+}
+
+.chroma .no {
+  color: teal;
+}
+
+.chroma .nt {
+  color: #22863a;
+}
+
+.chroma .nv {
+  color: teal;
+}
+
+.chroma .nx {
+  color: #24292e;
+}
+
+.chroma .o,
+.chroma .ow {
+  color: #d73a49;
+}
+
+.chroma .s,
+.chroma .s1,
+.chroma .s2 {
+  color: #106303;
+}
+
+.chroma .sa {
+  color: #cc7a00;
+}
+
+.chroma .sb {
+  color: #106303;
+}
+
+.chroma .sc {
+  color: #cc7a00;
+}
+
+.chroma .sd {
+  color: #106303;
+}
+
+.chroma .se {
+  color: #940;
+}
+
+.chroma .sh {
+  color: #106303;
+}
+
+.chroma .si {
+  color: #cc7a00;
+}
+
+.chroma .sr {
+  color: #4c4dbc;
+}
+
+.chroma .ss {
+  color: #940;
+}
+
+.chroma .sx {
+  color: #106303;
+}
+
+.chroma .vc,
+.chroma .vg,
+.chroma .vi {
+  color: teal;
+}
+
+.chroma .w {
+  color: #bbb;
+}
+
+.markup [src$="#gh-dark-mode-only"],
+.markup [src$="#dark-mode-only"],
+.markup [href$="#gh-dark-mode-only"],
+.markup [href$="#dark-mode-only"] {
+  display: none;
+}
+.markup [src$="#gh-light-mode-only"],
+.markup [src$="#light-mode-only"],
+.markup [href$="#gh-light-mode-only"],
+.markup [href$="#light-mode-only"] {
+  display: unset;
+}
+
+:root {
+  --fonts-proportional:
+    "Exo 2", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif !important;
+  --fonts-monospace:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace !important;
+
+  --moss-950: oklch(0.125 0.012 145);
+  --moss-900: oklch(0.160 0.015 145);
+  --moss-850: oklch(0.195 0.017 145);
+  --moss-800: oklch(0.235 0.019 145);
+  --moss-750: oklch(0.280 0.021 145);
+  --moss-700: oklch(0.330 0.023 145);
+  --moss-650: oklch(0.370 0.024 145);
+  --moss-600: oklch(0.420 0.025 145);
+  --moss-550: oklch(0.475 0.025 145);
+  --moss-500: oklch(0.540 0.024 145);
+  --moss-450: oklch(0.615 0.022 145);
+  --moss-400: oklch(0.690 0.020 145);
+  --moss-350: oklch(0.770 0.018 145);
+  --moss-300: oklch(0.855 0.016 145);
+  --moss-250: oklch(0.885 0.015 145);
+  --moss-200: oklch(0.915 0.012 145);
+  --moss-150: oklch(0.938 0.009 145);
+  --moss-100: oklch(0.967 0.007 145);
+  --moss-50:  oklch(0.985 0.004 145);
+
+  --is-dark-theme: false;
+
+  --color-primary: oklch(0.55 0.118 140);
+  --color-primary-contrast: #ffffff;
+  --color-primary-dark-1: oklch(0.50 0.115 140);
+  --color-primary-dark-2: oklch(0.44 0.108 140);
+  --color-primary-dark-3: oklch(0.39 0.098 140);
+  --color-primary-dark-4: oklch(0.34 0.088 140);
+  --color-primary-dark-5: oklch(0.29 0.075 140);
+  --color-primary-dark-6: oklch(0.24 0.062 140);
+  --color-primary-dark-7: oklch(0.19 0.050 140);
+  --color-primary-light-1: oklch(0.646 0.125 140);
+  --color-primary-light-2: oklch(0.705 0.120 140);
+  --color-primary-light-3: #8cc481;
+  --color-primary-light-4: oklch(0.837 0.095 140);
+  --color-primary-light-5: oklch(0.901 0.065 140);
+  --color-primary-light-6: oklch(0.954 0.035 140);
+  --color-primary-light-7: oklch(0.980 0.015 140);
+
+  --color-primary-alpha-10: oklch(0.55 0.118 140 / 0.10);
+  --color-primary-alpha-20: oklch(0.55 0.118 140 / 0.20);
+  --color-primary-alpha-30: oklch(0.55 0.118 140 / 0.30);
+  --color-primary-alpha-40: oklch(0.55 0.118 140 / 0.40);
+  --color-primary-alpha-50: oklch(0.55 0.118 140 / 0.50);
+  --color-primary-alpha-60: oklch(0.55 0.118 140 / 0.60);
+  --color-primary-alpha-70: oklch(0.55 0.118 140 / 0.70);
+  --color-primary-alpha-80: oklch(0.55 0.118 140 / 0.80);
+  --color-primary-alpha-90: oklch(0.55 0.118 140 / 0.90);
+
+  --color-primary-hover: var(--color-primary-dark-2);
+  --color-primary-active: var(--color-primary-dark-4);
+
+  --color-secondary: var(--moss-200);
+  --color-secondary-dark-1: var(--moss-200);
+  --color-secondary-dark-2: var(--moss-300);
+  --color-secondary-dark-3: var(--moss-300);
+  --color-secondary-dark-4: var(--moss-400);
+  --color-secondary-dark-5: var(--moss-400);
+  --color-secondary-dark-6: var(--moss-500);
+  --color-secondary-dark-7: var(--moss-500);
+  --color-secondary-dark-8: var(--moss-600);
+  --color-secondary-dark-9: var(--moss-600);
+  --color-secondary-dark-10: var(--moss-700);
+  --color-secondary-dark-11: var(--moss-700);
+  --color-secondary-dark-12: var(--moss-800);
+  --color-secondary-dark-13: var(--moss-800);
+  --color-secondary-light-1: var(--moss-200);
+  --color-secondary-light-2: var(--moss-100);
+  --color-secondary-light-3: var(--moss-100);
+  --color-secondary-light-4: var(--moss-50);
+
+  --color-secondary-alpha-10: oklch(0.855 0.016 145 / 0.10);
+  --color-secondary-alpha-20: oklch(0.855 0.016 145 / 0.20);
+  --color-secondary-alpha-30: oklch(0.855 0.016 145 / 0.30);
+  --color-secondary-alpha-40: oklch(0.855 0.016 145 / 0.40);
+  --color-secondary-alpha-50: oklch(0.855 0.016 145 / 0.50);
+  --color-secondary-alpha-60: oklch(0.855 0.016 145 / 0.60);
+  --color-secondary-alpha-70: oklch(0.855 0.016 145 / 0.70);
+  --color-secondary-alpha-80: oklch(0.855 0.016 145 / 0.80);
+  --color-secondary-alpha-90: oklch(0.855 0.016 145 / 0.90);
+
+  --color-secondary-hover: var(--color-secondary-dark-2);
+  --color-secondary-active: var(--color-secondary-dark-4);
+
+  --color-body: #ffffff;
+  --color-box-header: var(--moss-100);
+  --color-box-body: var(--moss-50);
+  --color-box-body-highlight: var(--moss-200);
+  --color-text-dark: #000000;
+  --color-text: var(--moss-900);
+  --color-text-light: var(--moss-700);
+  --color-text-light-1: var(--moss-650);
+  --color-text-light-2: var(--moss-600);
+  --color-text-light-3: var(--moss-550);
+  --color-footer: var(--moss-100);
+  --color-timeline: var(--moss-200);
+  --color-input-text: var(--moss-800);
+  --color-input-background: #ffffff;
+  --color-input-toggle-background: #ffffff;
+  --color-input-border: var(--moss-300);
+  --color-input-border-hover: var(--moss-400);
+  --color-header-wrapper: var(--moss-50);
+  --color-header-wrapper-transparent: oklch(0.985 0.004 145 / 0);
+  --color-light: #ffffffcc;
+  --color-light-mimic-enabled: rgba(0, 0, 0, calc(6 / 255 * 222 / 255 / var(--opacity-disabled)));
+  --color-light-border: #0000001d;
+  --color-hover: #e4e4e4aa;
+  --color-active: #e2e2e5;
+  --color-menu: var(--moss-100);
+  --color-card: var(--moss-50);
+  --fancy-card-bg: var(--moss-100);
+  --fancy-card-border: var(--moss-200);
+  --color-markup-table-row: #ffffff06;
+  --color-markup-code-block: var(--moss-150);
+  --color-markup-code-inline: var(--moss-200);
+  --color-button: var(--moss-150);
+  --color-code-bg: var(--moss-50);
+  --color-shadow: #00000060;
+  --color-secondary-bg: var(--moss-100);
+  --color-text-focus: #ffffff;
+  --color-expand-button: var(--moss-200);
+  --color-placeholder-text: var(--color-text-light-3);
+  --color-editor-line-highlight: var(--moss-100);
+  --color-project-board-bg: var(--color-secondary-light-2);
+  --color-project-board-dark-label: var(--color-text-light-3);
+  --color-caret: var(--color-text);
+  --color-reaction-bg: #0000000a;
+  --color-reaction-active-bg: var(--color-primary-alpha-20);
+  --color-reaction-hover-bg: var(--color-primary-alpha-30);
+  --color-tooltip-text: #ffffff;
+  --color-tooltip-bg: #000000f0;
+
+  --color-nav-bg: var(--color-primary);
+  --color-nav-hover-bg: var(--color-primary-dark-1);
+  --color-secondary-nav-bg: var(--color-body);
+
+  --color-label-text: var(--color-text);
+  --color-label-bg: #cacaca7b;
+  --color-label-hover-bg: #cacacaa0;
+  --color-label-active-bg: #cacacaff;
+  --color-label-bg-alt: #cacacaff;
+  --color-accent: var(--color-primary-light-1);
+  --color-small-accent: var(--color-primary-light-5);
+  --color-highlight-fg: var(--color-primary-light-4);
+  --color-highlight-bg: var(--color-primary-light-6);
+  --color-overlay-backdrop: #080808c0;
+  --color-selection-bg: var(--moss-450);
+  --color-selection-fg: var(--color-white);
+  --checkerboard-color-1: #ffffff;
+  --checkerboard-color-2: #e5e5e5;
+
+  --color-console-fg: #eeeff2;
+  --color-console-fg-subtle: #959cab;
+  --color-console-bg: #1f212b;
+  --color-console-border: #383c47;
+  --color-console-hover-bg: #ffffff16;
+  --color-console-active-bg: #454a57;
+  --color-console-menu-bg: #383c47;
+  --color-console-menu-border: #5c6374;
+
+  --color-diff-removed-word-bg: #fca5a5;
+  --color-diff-added-word-bg: #86efac;
+  --color-diff-removed-row-bg: #fee2e2;
+  --color-diff-moved-row-bg: #fef9c3;
+  --color-diff-added-row-bg: #dcfce7;
+  --color-diff-removed-row-border: #fca5a5;
+  --color-diff-moved-row-border: #fde047;
+  --color-diff-added-row-border: #86efac;
+  --color-diff-inactive: var(--moss-100);
+
+  --color-error-border: oklch(0.85 0.08 19);
+  --color-error-bg: oklch(0.94 0.035 19);
+  --color-error-bg-active: oklch(0.84 0.09 19);
+  --color-error-bg-hover: oklch(0.90 0.06 19);
+  --color-error-text: oklch(0.38 0.16 19);
+
+  --color-success-border: #bbf7d0;
+  --color-success-bg: #dcfce7;
+  --color-success-text: #14532d;
+  --color-warning-border: #fde047;
+  --color-warning-bg: #fef3c7;
+  --color-warning-text: #78350f;
+  --color-info-border: #bae6fd;
+  --color-info-bg: #e0f2fe;
+  --color-info-text: #0c4a6e;
+
+  --color-red: #dc2626;
+  --color-orange: #ea580c;
+  --color-yellow: #ca8a04;
+  --color-olive: #91a313;
+  --color-green: #15803d;
+  --color-teal: #0d9488;
+  --color-blue: #2563eb;
+  --color-violet: #7c3aed;
+  --color-purple: #9333ea;
+  --color-pink: #db2777;
+  --color-brown: #a47252;
+  --color-grey: var(--moss-500);
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-gold: #b1983b;
+
+  --color-red-light: #ef4444;
+  --color-orange-light: #f97316;
+  --color-yellow-light: #eab308;
+  --color-olive-light: #839311;
+  --color-green-light: #16a34a;
+  --color-teal-light: #14b8a6;
+  --color-blue-light: #3b82f6;
+  --color-violet-light: #8b5cf6;
+  --color-purple-light: #a855f7;
+  --color-pink-light: #ec4899;
+  --color-brown-light: #94674a;
+  --color-grey-light: var(--moss-300);
+  --color-black-light: #181818;
+
+  --color-red-dark-1: #c82020;
+  --color-orange-dark-1: #d34f0b;
+  --color-yellow-dark-1: #b67c04;
+  --color-olive-dark-1: #839311;
+  --color-green-dark-1: #137337;
+  --color-teal-dark-1: #0c857a;
+  --color-blue-dark-1: #1554e0;
+  --color-violet-dark-1: #6a1feb;
+  --color-purple-dark-1: #8519e7;
+  --color-pink-dark-1: #c7216b;
+  --color-brown-dark-1: #94674a;
+  --color-black-dark-1: #000000;
+
+  --color-red-dark-2: #b21d1d;
+  --color-orange-dark-2: #bb460a;
+  --color-yellow-dark-2: #a26e03;
+  --color-olive-dark-2: #74820f;
+  --color-green-dark-2: #116631;
+  --color-teal-dark-2: #0a766d;
+  --color-blue-dark-2: #124bc7;
+  --color-violet-dark-2: #5c14d8;
+  --color-purple-dark-2: #7715cf;
+  --color-pink-dark-2: #b11d5f;
+  --color-brown-dark-2: #835b42;
+  --color-black-dark-2: #000000;
+
+  --color-ansi-black: #1f2326;
+  --color-ansi-red: #cc4848;
+  --color-ansi-green: #87ab63;
+  --color-ansi-yellow: #cc9903;
+  --color-ansi-blue: #3a8ac6;
+  --color-ansi-magenta: #d22e8b;
+  --color-ansi-cyan: #00918a;
+  --color-ansi-white: var(--color-console-fg-subtle);
+  --color-ansi-bright-black: #46494d;
+  --color-ansi-bright-red: #d15a5a;
+  --color-ansi-bright-green: #93b373;
+  --color-ansi-bright-yellow: #eaaf03;
+  --color-ansi-bright-blue: #4e96cc;
+  --color-ansi-bright-magenta: #d74397;
+  --color-ansi-bright-cyan: #00b6ad;
+  --color-ansi-bright-white: var(--color-console-fg);
+
+  --color-red-badge: #b91c1c;
+  --color-red-badge-bg: #b91c1c22;
+  --color-red-badge-hover-bg: #b91c1c44;
+  --color-green-badge: #16a34a;
+  --color-green-badge-bg: #16a34a22;
+  --color-green-badge-hover-bg: #16a34a44;
+  --color-yellow-badge: #ca8a04;
+  --color-yellow-badge-bg: #ca8a0422;
+  --color-yellow-badge-hover-bg: #ca8a0444;
+  --color-orange-badge: #ea580c;
+  --color-orange-badge-bg: #ea580c22;
+  --color-orange-badge-hover-bg: #ea580c44;
+
+  --thin-lightness: 0.50;
+  --regular-chroma: 0.19;
+  --color-thin-green: oklch(var(--thin-lightness) var(--regular-chroma) 140deg);
+  --color-thin-red: oklch(var(--thin-lightness) var(--regular-chroma) 19deg);
+  --color-thin-purple: oklch(var(--thin-lightness) var(--regular-chroma) 298deg);
+  --color-thin-orange: oklch(var(--thin-lightness) var(--regular-chroma) 41deg);
+  --thin-lightness-highlight: 0.42;
+  --color-thin-red-highlight: oklch(var(--thin-lightness-highlight) var(--regular-chroma) 19deg);
+  --bg-lightness: 0.94;
+  --bg-chroma: 0.035;
+  --color-danger-bg: oklch(var(--bg-lightness) var(--bg-chroma) 19deg);
+
+  --color-indicator-offline: var(--moss-600);
+  --color-indicator-offline-20: oklch(0.420 0.025 145 / 0.20);
+  --color-indicator-idle: #16a34a;
+  --color-indicator-idle-20: #16a34a33;
+  --color-indicator-active: #2185d0;
+  --color-indicator-active-20: #2185d033;
+
+  accent-color: var(--color-accent);
+  color-scheme: light;
+}
+
+i.grey.icon.icon.icon.icon {
+  color: var(--moss-350) !important;
+}
+
+strong.attention-important, svg.attention-important {
+  color: var(--color-violet);
+}
+
+strong.attention-note, svg.attention-note {
+  color: var(--color-blue);
+}
+
+strong.attention-caution, svg.attention-caution {
+  color: var(--color-red);
+}
+
+.ui.secondary.vertical.menu {
+  border-radius: 0.28571429rem !important;
+  overflow: hidden;
+}
+
+.ui.basic.primary.button.item {
+  background-color: var(--color-active) !important;
+  color: var(--color-text) !important;
+  box-shadow: none !important;
+}
+
+.ui.red.label.notification_count,
+.ui.primary.label,
+.ui.primary.labels .label {
+  background-color: var(--color-primary-dark-1) !important;
+  color: #ffffff !important;
+}
+
+.ui.labeled.icon.buttons > .button > .icon,
+.ui.labeled.icon.button > .icon {
+  background-color: var(--color-shadow) !important;
+}
+
+#review-box .review-comments-counter {
+  background-color: var(--color-label-bg) !important;
+  margin-inline-start: 0.5em;
+}
+
+.ui.basic.labels .primary.label,
+.ui.ui.ui.basic.primary.label {
+  color: var(--color-text-dark) !important;
+}
+
+.ui.yellow.label.pending-label {
+  background: var(--color-warning-bg) !important;
+  color: var(--color-text-dark) !important;
+}
+
+.ui.basic.red.button {
+  background-color: var(--color-error-bg) !important;
+  color: var(--color-error-text) !important;
+  border-color: var(--color-error-border) !important;
+}
+
+.ui.basic.red.button:hover,
+.ui.basic.red.button:focus {
+  background-color: var(--color-error-bg-hover) !important;
+  color: var(--color-error-text) !important;
+}
+
+.ui.basic.red.button:active {
+  background-color: var(--color-error-bg-active) !important;
+  color: var(--color-error-text) !important;
+}
+
+a {
+  color: oklch(from var(--color-primary) 0.44 c h);
+}
+
+/* Change 1: white foreground to match the green background */
+#navbar .navbar-left > a.item,
+#navbar .navbar-right > a.item,
+#navbar .navbar-right details.dropdown > summary,
+#navbar .navbar-mobile-right > a.item,
+#navbar .navbar-mobile-right > button.item {
+  color: #ffffff;
+}
+#navbar .navbar-left > a.item.active,
+#navbar .navbar-right > a.item.active,
+#navbar .navbar-mobile-right > a.item.active,
+#navbar .navbar-mobile-right > button.item.active {
+  background-color: var(--color-primary-dark-2) !important;
+}
+
+/* Change 2: lower box shadows on popups
+  I might've missed other popups here... */
+.ui.dropdown .menu,
+.tippy-box[data-theme="menu"],
+details.dropdown > .content {
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  border: 1px solid var(--moss-300) !important;
+  box-shadow: 0 6px 16px -2px var(--color-shadow) !important;
+}
+
+/* Change 3: we don't need a footer */
+footer.page-footer {
+  display: none !important;
+}
+
+/* Change 4: hide explore tabs and add a margin on top of the content*/
+.page-content.explore.repositories > overflow-menu.secondary-nav {
+  display: none !important;
+}
+.page-content.explore.repositories > .ui.container {
+  margin-top: 1rem;
+}
+
+/* Change 5: hide scrollbar on chromium*/
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Change 6: sticky code header */
+.non-diff-file-content > h4.file-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+  background-color: var(--color-box-header) !important;
+}
