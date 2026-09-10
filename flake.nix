@@ -8,8 +8,8 @@
     in {
       machine = inputs.nixpkgs.lib.nixosSystem {
         modules = mkCommon "machine" ++ [
-          ./modules/browsing
-          ./modules/graphical
+          ./modules/browsers
+          ./modules/graphics
           ./modules/workstation
         ];
 

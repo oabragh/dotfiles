@@ -1,6 +1,5 @@
 { inputs, pkgs, ... }: {
   imports = [
-    ./fhs.nix
     ./hardware.nix
     ./network.nix
     ./packages.nix
