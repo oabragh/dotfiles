@@ -3,7 +3,7 @@ let
   cfg = config.sys;
   domain = cfg.domain;
 
-  excalidrawPort = 3004;
+  excalidrawPort = 3006;
 in
 {
   virtualisation.oci-containers = {

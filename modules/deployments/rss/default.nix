@@ -4,7 +4,6 @@ let
   domain = cfg.domain;
 
   minifluxPort = 3002;
-  nextfluxPort = 3003;
 in
 {
   services.miniflux = {
@@ -20,30 +19,12 @@ in
     };
   };
 
-  virtualisation.oci-containers = {
-    backend = "podman";
-    containers.nextflux = {
-      image = "electh/nextflux:latest";
-      ports = [ "127.0.0.1:${toString nextfluxPort}:3000" ];
-      autoStart = true;
-    };
-  };
-
   services.nginx.virtualHosts = {
     "rss.${domain}" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
         proxyPass = "http://127.0.0.1:${toString minifluxPort}";
-      };
-    };
-
-    "reader.${domain}" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString nextfluxPort}";
-        proxyWebsockets = true;
       };
     };
   };
