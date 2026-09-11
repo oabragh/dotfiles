@@ -21,7 +21,7 @@ in
   };
 
   virtualisation.oci-containers = {
-    backend = "docker";
+    backend = "podman";
     containers.nextflux = {
       image = "electh/nextflux:latest";
       ports = [ "127.0.0.1:${toString nextfluxPort}:3000" ];

@@ -26,6 +26,7 @@
           ./modules/deployments/mail
           ./modules/deployments/vault
           ./modules/deployments/element
+          ./modules/deployments/excalidraw
 
           # Necessary for the deployments to function (nginx setup)
           ./modules/deployments

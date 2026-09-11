@@ -23,4 +23,6 @@
     enable = true;
     package = pkgs.waydroid-nftables;
   };
+
+  programs.kdeconnect.enable = true;
 }
