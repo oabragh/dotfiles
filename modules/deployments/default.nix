@@ -13,12 +13,6 @@
     clientMaxBodySize = "512m";
   };
 
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
-    defaultNetwork.settings.dns_enabled = true;
-  };
-
   networking.firewall.allowedTCPPorts = [
     80
     443
