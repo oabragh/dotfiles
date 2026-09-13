@@ -27,7 +27,7 @@ in
   };
 
   services.nginx.virtualHosts = {
-    "git.${domain}" = {
+    "code.${domain}" = {
       enableACME = true;
       forceSSL = true;
 
@@ -44,7 +44,7 @@ in
     };
   };
 
-  security.acme.certs."git.${domain}" = {
+  security.acme.certs."code.${domain}" = {
     group = "nginx";
     reloadServices = [ "nginx.service" ];
   };
