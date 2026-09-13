@@ -12,4 +12,7 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.timeout = if (cfg.host.name == "machine") then 0 else 10;
   boot.initrd.verbose = false;
+
+  # For emergencies
+  boot.kernel.sysctl."kernel.sysrq" = 1;
 }
