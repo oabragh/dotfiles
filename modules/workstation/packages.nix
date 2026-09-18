@@ -20,19 +20,18 @@ in
       rnote
       impression
 
-      # terminals
       alacritty
       foot
 
       qbittorrent
-      # TODO: i don't want keepass anymore
       keepassxc
       zed-editor
       android-tools
       brightnessctl
       git-cliff
 
-      # spotify
+      spotify
+      obsidian
       mpv
 
       (ani-cli.overrideAttrs (oldAttrs: {

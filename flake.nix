@@ -24,8 +24,8 @@
           ./modules/deployments/git
           ./modules/deployments/rss
           ./modules/deployments/mail
-          ./modules/deployments/vault
-          ./modules/deployments/element
+          # ./modules/deployments/vault
+          # ./modules/deployments/element
           ./modules/deployments/radicle
 
           # Necessary for the deployments to function (nginx setup)
