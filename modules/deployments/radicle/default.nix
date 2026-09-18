@@ -24,6 +24,19 @@ in
       listenAddress = "127.0.0.1";
       listenPort = radicleHttpdPort;
     };
+
+    settings = {
+      publicExplorer = "https://code.${domain}/nodes/$host/$rid$path";
+
+      node = {
+        alias = "code.${domain}";
+        externalAddresses = [ "code.${domain}:${toString radicleSeedPort}" ];
+        seedingPolicy = {
+          default = "block";
+          scope = "all";
+        };
+      };
+    };
   };
 
   services.nginx.virtualHosts = {
@@ -36,7 +49,7 @@ in
         proxyWebsockets = true;
         extraConfig = ''
           proxy_set_header X-Forwarded-Proto http;
-          client_max_body_size 500m; # Allows pushing large repositories
+          client_max_body_size 500m;
         '';
 
         recommendedProxySettings = false;
