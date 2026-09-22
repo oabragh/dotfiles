@@ -34,14 +34,11 @@ in
       obsidian
       mpv
 
-      (ani-cli.overrideAttrs (oldAttrs: {
-        src = fetchFromGitHub {
-          owner = "Dhairya3391";
-          repo = "ani-cli";
-          rev = "temp-fix";
-          hash = "sha256-b/e//d1cafxBbYfOHc0lbYkUt/jT/MjIB7lFRfohdOA=";
-        };
-      }))
+      aseprite
+      wl-screenrec
+      wl-clipboard
+      radicle-node
+      radicle-desktop
     ]
     ++ [
       playground

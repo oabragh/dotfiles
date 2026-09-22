@@ -5,7 +5,7 @@
 }:
 {
   imports = [
-    (inputs.dms.nixosModules.dank-material-shell)
+    # (inputs.dms.nixosModules.dank-material-shell)
   ];
 
   environment.systemPackages = with pkgs; [
@@ -33,21 +33,21 @@
   };
 
   # TODO: get rid of ai slop
-  programs.dank-material-shell = {
-    enable = true;
-    systemd = {
-      enable = true;
-      restartIfChanged = true;
-    };
-  };
-  systemd.user.services.dms = {
-    serviceConfig = {
-      IOSchedulingClass = "best-effort";
-      IOSchedulingPriority = 0;
-      Nice = -20;
-      OOMScoreAdjust = -1000;
-      CPUSchedulingResetOnFork = false;
-      Slice = "session.slice";
-    };
-  };
+  # programs.dank-material-shell = {
+  #   enable = true;
+  #   systemd = {
+  #     enable = true;
+  #     restartIfChanged = true;
+  #   };
+  # };
+  # systemd.user.services.dms = {
+  #   serviceConfig = {
+  #     IOSchedulingClass = "best-effort";
+  #     IOSchedulingPriority = 0;
+  #     Nice = -20;
+  #     OOMScoreAdjust = -1000;
+  #     CPUSchedulingResetOnFork = false;
+  #     Slice = "session.slice";
+  #   };
+  # };
 }

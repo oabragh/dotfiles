@@ -24,7 +24,5 @@
     package = pkgs.waydroid-nftables;
   };
 
-  environment.systemPackages = [ pkgs.wl-clipboard ];
-
   programs.kdeconnect.enable = true;
 }
