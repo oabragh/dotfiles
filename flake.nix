@@ -1,40 +1,42 @@
 {
   outputs = inputs: {
-    nixosConfigurations = let
-      mkCommon = hostname: [
-        ./hosts/${hostname}
-        ./modules/common
-      ];
-    in {
-      machine = inputs.nixpkgs.lib.nixosSystem {
-        modules = mkCommon "machine" ++ [
-          ./modules/browsers
-          ./modules/graphics
-          ./modules/workstation
+    nixosConfigurations =
+      let
+        mkCommon = hostname: [
+          ./hosts/${hostname}
+          ./modules/common
         ];
+      in
+      {
+        machine = inputs.nixpkgs.lib.nixosSystem {
+          modules = mkCommon "machine" ++ [
+            ./modules/browsers
+            ./modules/graphics
+            ./modules/workstation
+          ];
 
-        specialArgs = {
-          inherit inputs;
+          specialArgs = {
+            inherit inputs;
+          };
+        };
+
+        vps = inputs.nixpkgs.lib.nixosSystem {
+          modules = mkCommon "vps" ++ [
+            ./modules/deployments/ssh
+            ./modules/deployments/git
+            ./modules/deployments/rss
+            ./modules/deployments/mail
+            ./modules/deployments/radicle
+
+            # Necessary for the deployments to function (nginx setup)
+            ./modules/deployments
+          ];
+
+          specialArgs = {
+            inherit inputs;
+          };
         };
       };
-
-      vps = inputs.nixpkgs.lib.nixosSystem {
-        modules = mkCommon "vps" ++ [
-          ./modules/deployments/ssh
-          ./modules/deployments/git
-          ./modules/deployments/rss
-          ./modules/deployments/mail
-          ./modules/deployments/radicle
-
-          # Necessary for the deployments to function (nginx setup)
-          ./modules/deployments
-        ];
-
-        specialArgs = {
-          inherit inputs;
-        };
-      };
-    };
 
     templates = rec {
       python = {

@@ -1,3 +1,6 @@
+let
+  laptop = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHhdIivFObJDyj5j0JNQhq4P5gsIGkhpMnZKuUzlIa9L";
+in
 {
   services.openssh = {
     enable = true;
@@ -17,8 +20,8 @@
     };
   };
 
-  users.users.root.openssh.authorizedKeys.keyFiles = [
-    ../../../ssh-keys/machine.pub
+  users.users.root.openssh.authorizedKeys.key = [
+    laptop
   ];
 
   networking.firewall.allowedTCPPorts = [

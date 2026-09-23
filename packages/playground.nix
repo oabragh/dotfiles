@@ -25,24 +25,25 @@ let
     pkgs.qt6.qtdeclarative
     # ...
   ];
-in pkgs.buildFHSEnv {
-    name = "play";
+in
+pkgs.buildFHSEnv {
+  name = "play";
 
-    targetPkgs =
-      pkgs:
-      (base.targetPkgs pkgs)
-      ++ (with pkgs; [
-        pythonEnv
-        qtEnv
-        julia
-        clang
-        fish
-        cowsay
-      ]);
+  targetPkgs =
+    pkgs:
+    (base.targetPkgs pkgs)
+    ++ (with pkgs; [
+      pythonEnv
+      qtEnv
+      julia
+      clang
+      fish
+      cowsay
+    ]);
 
-    profile = ''
-      echo -e "Welcome to the Upside Down..." | cowsay -f sus
-    '';
+  profile = ''
+    echo -e "Welcome to the Upside Down..." | cowsay -f sus
+  '';
 
-    runScript = "${pkgs.fish}/bin/fish";
-  }
+  runScript = "${pkgs.fish}/bin/fish";
+}

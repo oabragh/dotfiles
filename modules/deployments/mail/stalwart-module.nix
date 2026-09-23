@@ -1,6 +1,4 @@
-/*
-  thanks to @kosslan
-*/
+# thanks to @kosslan
 
 {
   lib,

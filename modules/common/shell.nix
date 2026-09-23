@@ -91,7 +91,7 @@ let
     };
   };
 
-  ttyStarshipPrompt = toToml "starship-tty.toml" {};
+  ttyStarshipPrompt = toToml "starship-tty.toml" { };
 in
 {
   programs.zoxide = {
