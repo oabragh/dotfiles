@@ -20,7 +20,7 @@ in
     };
   };
 
-  users.users.root.openssh.authorizedKeys.key = [
+  users.users.root.openssh.authorizedKeys.keys = [
     laptop
   ];
 
