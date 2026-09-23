@@ -54,6 +54,10 @@ in
 
         recommendedProxySettings = false;
       };
+
+      locations."= /" = {
+        return = "302 https://${domain}/forge";
+      };
     };
   };
 
