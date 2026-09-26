@@ -1,60 +1,56 @@
 {
-  outputs = inputs: {
-    nixosConfigurations =
-      let
-        mkCommon = hostname: [
-          ./hosts/${hostname}
-          ./modules/common
+  outputs =
+    inputs:
+    let
+      inherit (inputs.nixpkgs) lib;
+
+      subDirs =
+        dir:
+        builtins.attrNames (lib.filterAttrs (name: type: type == "directory") (builtins.readDir ./${dir}));
+
+      system = "x86_64-linux";
+
+      pkgs = import inputs.nixpkgs {
+        inherit system;
+      };
+    in
+    {
+      nixosConfigurations =
+        let
+          mkHost =
+            hostname:
+            lib.nixosSystem {
+              modules = [
+                ./hosts/${hostname}
+                ./hosts/shared
+                (inputs.agenix.nixosModules.default)
+              ];
+
+              specialArgs = {
+                inherit inputs;
+                keys = import ./secrets/keys.nix;
+              };
+            };
+        in
+        lib.genAttrs (builtins.filter (i: i != "shared") (subDirs "hosts")) mkHost;
+
+      templates =
+        let
+          mkTemplate = name: {
+            ${name} = {
+              path = ./templates/${name};
+            };
+          };
+        in
+        lib.genAttrs (subDirs "templates") mkTemplate;
+
+      devShells.${system}.default = pkgs.mkShell {
+        packages = [
+          pkgs.nixfmt-tree
+          pkgs.nixfmt
         ];
-      in
-      {
-        machine = inputs.nixpkgs.lib.nixosSystem {
-          modules = mkCommon "machine" ++ [
-            ./modules/browsers
-            ./modules/graphics
-            ./modules/workstation
-          ];
-
-          specialArgs = {
-            inherit inputs;
-          };
-        };
-
-        vps = inputs.nixpkgs.lib.nixosSystem {
-          modules = mkCommon "vps" ++ [
-            ./modules/deployments/ssh
-            ./modules/deployments/git
-            ./modules/deployments/rss
-            ./modules/deployments/mail
-            ./modules/deployments/radicle
-
-            # Necessary for the deployments to function (nginx setup)
-            ./modules/deployments
-          ];
-
-          specialArgs = {
-            inherit inputs;
-          };
-        };
       };
-
-    templates = rec {
-      python = {
-        path = ./templates/python;
-        description = "Python project starter template using uv";
-      };
-      rust = {
-        path = ./templates/rust;
-        description = "Rust project starter template";
-      };
-      typst = {
-        path = ./templates/typst;
-        description = "Simple typst template";
-      };
-
-      default = python;
     };
-  };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -66,18 +62,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # dms = {
-    #   url = "github:AvengeMedia/DankMaterialShell";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     hjem = {
       url = "github:feel-co/hjem";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -86,10 +72,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # repo size is 1.1gb 💀
-    # qylock = {
-    #   url = "github:Darkkal44/qylock";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = "";
+    };
+
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }
