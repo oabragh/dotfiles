@@ -1,9 +1,11 @@
 { config, keys, ... }:
 let
-  domain = config.domain;
-
   radicleSeedPort = 3007;
   radicleHttpdPort = 3008;
+
+  aliases = {
+    dotfiles = "rad:z39hwsxW4pZF6VPtAvg1K2x3ZDqHu";
+  };
 in
 {
   age.secrets.radicle = {
@@ -28,15 +30,13 @@ in
       enable = true;
       listenAddress = "127.0.0.1";
       listenPort = radicleHttpdPort;
-      aliases = {
-        dotfiles = "rad:z39hwsxW4pZF6VPtAvg1K2x3ZDqHu";
-      };
+      inherit aliases;
     };
 
     settings = {
       node = {
-        alias = "code.${domain}";
-        externalAddresses = [ "code.${domain}:${toString radicleSeedPort}" ];
+        alias = "code.${config.domain}";
+        externalAddresses = [ "code.${config.domain}:${toString radicleSeedPort}" ];
         seedingPolicy = {
           default = "block";
           scope = "all";
@@ -47,7 +47,7 @@ in
 
   services.nginx.virtualHosts = {
     # TODO: seed. or git. is a better fit
-    "code.${domain}" = {
+    "code.${config.domain}" = {
       enableACME = true;
       forceSSL = true;
 
@@ -63,12 +63,12 @@ in
       };
 
       locations."= /" = {
-        return = "302 https://${domain}/repos";
+        return = "302 https://${config.domain}/repos";
       };
     };
   };
 
-  security.acme.certs."code.${domain}" = {
+  security.acme.certs."code.${config.domain}" = {
     group = "nginx";
     reloadServices = [ "nginx.service" ];
   };
