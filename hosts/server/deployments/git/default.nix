@@ -1,7 +1,5 @@
 { config, ... }:
 let
-  domain = config.domain;
-
   internalPort = 3001;
 in
 {
@@ -39,12 +37,12 @@ in
       };
 
       server = {
-        DOMAIN = "git.${domain}";
-        SSH_DOMAIN = "git.${domain}";
+        DOMAIN = "git.${config.domain}";
+        SSH_DOMAIN = "git.${config.domain}";
         SSH_PORT = 22;
         HTTP_ADDR = "127.0.0.1";
         HTTP_PORT = internalPort;
-        ROOT_URL = "https://git.${domain}/";
+        ROOT_URL = "https://git.${config.domain}/";
         LANDING_PAGE = "explore";
       };
 
@@ -86,7 +84,7 @@ in
     ];
   };
 
-  services.nginx.virtualHosts."git.${domain}" = {
+  services.nginx.virtualHosts."git.${config.domain}" = {
     enableACME = true;
     forceSSL = true;
 

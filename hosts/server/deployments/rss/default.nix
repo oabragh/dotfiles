@@ -1,7 +1,5 @@
 { config, ... }:
 let
-  domain = config.domain;
-
   minifluxPort = 3002;
 in
 {
@@ -18,13 +16,13 @@ in
 
     config = {
       LISTEN_ADDR = "127.0.0.1:${toString minifluxPort}";
-      BASE_URL = "https://rss.${domain}/";
+      BASE_URL = "https://rss.${config.domain}/";
       RUN_MIGRATIONS = 1;
       BATCH_SIZE = "100";
     };
   };
 
-  services.nginx.virtualHosts."rss.${domain}" = {
+  services.nginx.virtualHosts."rss.${config.domain}" = {
     enableACME = true;
     forceSSL = true;
     locations."/".proxyPass = "http://127.0.0.1:${toString minifluxPort}";
