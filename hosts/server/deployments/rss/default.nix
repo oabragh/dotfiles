@@ -6,7 +6,7 @@ let
 in
 {
   age.secrets."miniflux-admin" = {
-    file = ../../../../secrets/server/miniflux-admin.age;
+    file = ../../../../secrets/server/miniflux-admin.env.age;
     owner = "miniflux";
     group = "miniflux";
   };

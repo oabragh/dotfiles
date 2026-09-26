@@ -12,7 +12,7 @@ in
 
   age.secrets = {
     "stalwart-admin" = {
-      file = ../../../../secrets/server/stalwart-admin.age;
+      file = ../../../../secrets/server/stalwart-admin.env.age;
       owner = "stalwart";
       group = "stalwart";
     };
