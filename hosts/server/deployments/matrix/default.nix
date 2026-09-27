@@ -19,11 +19,7 @@ in
     ];
   };
 
-  networking.firewall.allowedTCPPorts = [
-    80
-    443
-    8448
-  ];
+  networking.firewall.allowedTCPPorts = [ 8448 ];
 
   services.matrix-tuwunel = {
     enable = true;
@@ -46,64 +42,48 @@ in
     };
   };
 
-  services.nginx = {
-    enable = true;
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
-    recommendedGzipSettings = true;
+  services.nginx.virtualHosts = {
+    "${config.domain}".locations."^~ /.well-known/matrix/" = {
+      proxyPass = "http://127.0.0.1:${toString matrixServerPort}";
+      extraConfig = ''
+        proxy_set_header Host ${matrixDomain};
+      '';
+    };
 
-    virtualHosts = {
-      "${config.domain}" = {
-        enableACME = true;
-        forceSSL = true;
+    "${matrixDomain}" = {
+      enableACME = true;
+      forceSSL = true;
 
-        locations."^~ /.well-known/matrix/" = {
-          proxyPass = "http://127.0.0.1:${toString matrixServerPort}";
-          extraConfig = ''
-            proxy_set_header Host ${matrixDomain};
-          '';
-        };
-      };
+      listen = [
+        {
+          addr = "0.0.0.0";
+          port = 443;
+          ssl = true;
+        }
+        {
+          addr = "0.0.0.0";
+          port = 8448;
+          ssl = true;
+        }
+        {
+          addr = "[::]";
+          port = 443;
+          ssl = true;
+        }
+        {
+          addr = "[::]";
+          port = 8448;
+          ssl = true;
+        }
+      ];
 
-      "${matrixDomain}" = {
-        enableACME = true;
-        forceSSL = true;
+      extraConfig = ''
+        client_max_body_size 100M;
+      '';
 
-        listen = [
-          {
-            addr = "0.0.0.0";
-            port = 443;
-            ssl = true;
-          }
-          {
-            addr = "0.0.0.0";
-            port = 8448;
-            ssl = true;
-          }
-          {
-            addr = "[::]";
-            port = 443;
-            ssl = true;
-          }
-          {
-            addr = "[::]";
-            port = 8448;
-            ssl = true;
-          }
-        ];
-
-        extraConfig = ''
-          client_max_body_size 100M;
-        '';
-
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:${toString matrixServerPort}";
-          proxyWebsockets = true;
-        };
-
-        locations."= /" = {
-          return = "302 https://${config.domain}/repos";
-        };
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:${toString matrixServerPort}";
+        proxyWebsockets = true;
       };
     };
   };
