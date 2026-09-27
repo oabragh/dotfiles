@@ -13,5 +13,6 @@
     ./ssh-client.nix
     ./users.nix
     ./waydroid.nix
+    ./gnupg.nix
   ];
 }
