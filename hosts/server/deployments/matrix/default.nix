@@ -52,11 +52,17 @@ in
   };
 
   services.nginx.virtualHosts = {
-    "${config.domain}".locations."^~ /.well-known/matrix/" = {
-      proxyPass = "http://127.0.0.1:${toString matrixServerPort}";
-      extraConfig = ''
-        proxy_set_header Host ${matrixDomain};
-      '';
+    "${config.domain}" = {
+      # TODO: put this somewhere else when you host website
+      enableACME = true;
+      forceSSL = true;
+
+      locations."^~ /.well-known/matrix/" = {
+        proxyPass = "http://127.0.0.1:${toString matrixServerPort}";
+        extraConfig = ''
+          proxy_set_header Host ${matrixDomain};
+        '';
+      };
     };
 
     "${matrixDomain}" = {
