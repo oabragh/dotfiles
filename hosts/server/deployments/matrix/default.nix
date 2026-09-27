@@ -57,17 +57,9 @@ in
       enableACME = true;
       forceSSL = true;
 
-      locations."= /.well-known/matrix/server".extraConfig = ''
-        default_type application/json;
-        add_header Access-Control-Allow-Origin *;
-        return 200 '{"m.server":"matrix.${config.domain}:443"}';
-      '';
-
-      locations."= /.well-known/matrix/client".extraConfig = ''
-        default_type application/json;
-        add_header Access-Control-Allow-Origin *;
-        return 200 '{"m.homeserver":{"base_url":"https://matrix.${config.domain}"}}';
-      '';
+      locations."^~ /.well-known/matrix/" = {
+        proxyPass = "http://127.0.0.1:${toString matrixServerPort}";
+      };
     };
 
     "${matrixDomain}" = {
