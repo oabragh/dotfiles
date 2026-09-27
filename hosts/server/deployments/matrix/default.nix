@@ -8,6 +8,12 @@ let
   matrixServerPort = 3009;
 in
 {
+  age.secrets."registration-token" = {
+    file = ../../../../secrets/server/matrix-registration-token.age;
+    owner = "tuwunel";
+    group = "tuwunel";
+  };
+
   nix.settings = {
     extra-substituters = [
       "https://cache.tuwunel.chat"
@@ -39,6 +45,9 @@ in
       };
 
       ip_source = "x_real_ip";
+
+      allow_registration = true;
+      registration_token_file = config.age.secrets."registration-token".path;
     };
   };
 
