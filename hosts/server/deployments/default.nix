@@ -4,6 +4,7 @@
     ./mail
     ./radicle
     ./rss
+    ./matrix
   ];
 
   security.acme = {
