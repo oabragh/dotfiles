@@ -40,7 +40,7 @@ in
 
   hjem.users.oabragh.files = {
     ".config/neovide/config.toml" = {
-      generator = lib.generators.toJSON;
+      generator = (pkgs.formats.toml { }).generate "config.toml";
       value = neovideConfig;
     };
   };
