@@ -10,6 +10,7 @@ let
     iris = "z6MkrLMMsiPWUcNPHcRajuMi9mDfYckSoJyPwwnknocNYPm7@iris.radicle.network:58776";
     rosa = "z6Mkmqogy2qEM2ummccUthFEaaHvyYmYBYh3dbe9W4ebScxo@rosa.radicle.network:58776";
     server = "z6MknUx5zFKTEEnWfaVwWHGE7GshBez84K3gKH6t2DHCCrmb@code.oabragh.dedyn.io:3007";
+    at = "z6MkjDYUKMUeY58Vtr8dGJrHRvnTfjKWVGCBYJDVTHXsXzm5@seed.radicle.at:8776";
   };
 
   radicleConfig = {
@@ -19,6 +20,7 @@ let
       seeds.server
       seeds.iris
       seeds.rosa
+      seeds.at
     ];
 
     cli = {
@@ -38,6 +40,9 @@ let
 
       connect = [
         seeds.server
+        seeds.iris
+        seeds.rosa
+        seeds.at
       ];
 
       seedingPolicy = {
