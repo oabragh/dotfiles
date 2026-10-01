@@ -26,10 +26,11 @@ in
 
       android-tools
       brightnessctl
-      gpu-screen-recorder
       wl-clipboard
       sherlock
       git-cliff
+      helix
+      yazi
 
       spotify
       obsidian
@@ -38,4 +39,6 @@ in
     ++ [
       playground
     ];
+
+  programs.gpu-screen-recorder.enable = true;
 }
