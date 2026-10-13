@@ -36,6 +36,7 @@ pkgs.buildFHSEnv {
       pythonEnv
       qtEnv
       julia
+      nasm
       clang
       fish
       cowsay

@@ -22,10 +22,6 @@ in
     # Ensures that `nixpkgs` in, for example, `nix run nixpkgs#...`
     # matches this flake's nixpkgs
     registry.nixpkgs.flake = inputs.nixpkgs;
-
-    # For legacy commands like nix-shell
-    # Ensures <nixpkgs> matches this flake's nixpkgs
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   };
 
   nix.settings = {
@@ -55,6 +51,10 @@ in
     ];
 
     trusted-users = [ "oabragh" ];
+
+    # For legacy commands like nix-shell
+    # Ensures <nixpkgs> matches this flake's nixpkgs
+    nix-path = [ "nixpkgs=${inputs.nixpkgs}" ];
   };
 
   programs = {
