@@ -25,7 +25,9 @@ in
     bibata-cursors
     papirus-icon-theme
     gnome-themes-extra
-    adw-gtk3
+    gsettings-desktop-schemas
+    glib
+    # adw-gtk3
   ];
 
   environment.sessionVariables = {

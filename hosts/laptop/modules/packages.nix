@@ -1,44 +1,43 @@
-inputs@{
-  pkgs,
-  ...
-}:
+inputs@{ pkgs, ... }:
 let
   playground = import ../../../packages/playground.nix inputs;
-
-  gnomeBloat = with pkgs; [
-    gnome-calculator
-    nautilus
-    loupe
-    decibels
-    rnote
-  ];
 in
 {
   environment.systemPackages =
     with pkgs;
     [
-      qbittorrent
       keepassxc
       zed-editor
       aseprite
       sioyek
       mpv
-
       android-tools
       brightnessctl
       wl-clipboard
       sherlock
       git-cliff
-      helix
       yazi
-
+      meli
+      udiskie
       spotify
       obsidian
-    ]
-    ++ gnomeBloat
-    ++ [
       playground
+      rnote
+      loupe
+      nautilus
     ];
 
+  # temporally here
   programs.gpu-screen-recorder.enable = true;
+
+  services.gnome.gcr-ssh-agent.enable = false;
+
+  # TODO: implement in quickshell
+  security.soteria.enable = true;
+
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+  };
+  services.vdirsyncer.enable = true;
 }

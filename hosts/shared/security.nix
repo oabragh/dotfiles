@@ -8,9 +8,10 @@ let
   isLaptop = config.networking.hostName == "laptop";
 in
 {
+  # at this point just move this to laptop only
   security = {
     rtkit.enable = isLaptop;
-    polkit.enable = true;
+    polkit.enable = isLaptop;
 
     apparmor = {
       enable = true;

@@ -2,7 +2,6 @@
 let
   neovideConfig = {
     title-hidden = true;
-    maximized = true;
     frame = "none";
     tabs = false;
     srgb = true;
@@ -30,12 +29,6 @@ in
     neovide
     tree-sitter
     unzip
-    nil
-    nixd
-    alejandra
-    lua-language-server
-    kdePackages.qtdeclarative
-    rust-analyzer
   ];
 
   hjem.users.oabragh.files = {

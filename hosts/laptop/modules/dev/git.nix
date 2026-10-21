@@ -21,13 +21,8 @@
       fetch.prune = true;
 
       init.defaultBranch = "main";
-
-      column.ui = "auto";
       branch.sort = "-committerdate";
-
-      diff.colorMoved = "default";
       merge.conflictstyle = "zdiff3";
-      rerere.enabled = true;
     };
   };
 }

@@ -4,7 +4,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    darkly
+    kdePackages.breeze
     kdePackages.breeze-icons
   ];
 
@@ -13,9 +13,9 @@
 
     config = {
       theme = {
-        colorScheme = "${pkgs.darkly}/share/color-schemes/Darkly.colors";
+        colorScheme = "${pkgs.kdePackages.breeze}/colors/BreezeDark.colors";
         iconTheme = "breeze-dark";
-        style = "darkly";
+        style = "breeze";
 
         font = {
           family = "Noto Sans";

@@ -27,5 +27,7 @@
     package = pkgs.niri-unstable;
   };
 
+  services.gvfs.enable = true;
+
   # TODO: configure niri keybindings, layout, and window rules here
 }

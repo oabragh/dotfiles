@@ -84,7 +84,13 @@ in
   ];
 
   age.secrets.radicle = {
-    file = ../../../secrets/laptop/radicle.age;
+    file = ../../../../secrets/laptop/radicle.age;
+    owner = "oabragh";
+    group = "users";
+  };
+
+  age.secrets.radicle-passphrase = {
+    file = ../../../../secrets/laptop/radicle-passphrase.env.age;
     owner = "oabragh";
     group = "users";
   };
@@ -95,7 +101,28 @@ in
       value = radicleConfig;
     };
 
+    # TODO: move this to keepass/ssh-agent
     files.".radicle/keys/radicle".source = config.age.secrets.radicle.path;
     files.".radicle/keys/radicle.pub".text = keys.radicle.laptop-node;
+  };
+
+  systemd.user.services.radicle-node = {
+    description = "Radicle Node";
+    wantedBy = [ "default.target" ];
+
+    environment = {
+      RAD_HOME = "/home/oabragh/.radicle";
+      RUST_BACKTRACE = "1";
+    };
+
+    serviceConfig = {
+      ExecStart = "${pkgs.radicle-node}/bin/radicle-node";
+      KillMode = "process";
+      Restart = "always";
+      RestartSec = 3;
+      MemoryDenyWriteExecute = true;
+
+      EnvironmentFile = config.age.secrets.radicle-passphrase.path;
+    };
   };
 }

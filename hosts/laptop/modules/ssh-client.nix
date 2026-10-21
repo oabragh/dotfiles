@@ -1,10 +1,7 @@
 { keys, ... }:
 let
   server = {
-    aliases = [
-      "server"
-      "vps"
-    ];
+    aliases = [ "server" ];
     user = "root";
     ip = "159.195.112.189";
     pub = keys.hosts.server;
@@ -12,6 +9,8 @@ let
 in
 {
   programs.ssh = {
+    startAgent = true;
+
     knownHosts = {
       "server" = {
         publicKey = server.pub;

@@ -9,4 +9,5 @@ in
   "server/matrix-registration-token.age".publicKeys = keys.serverOnly;
 
   "laptop/radicle.age".publicKeys = keys.laptopOnly;
+  "laptop/radicle-passphrase.env.age".publicKeys = keys.laptopOnly;
 }

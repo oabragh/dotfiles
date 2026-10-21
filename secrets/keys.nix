@@ -25,7 +25,10 @@ rec {
   ];
 
   radicle = {
+    # did:key:z6MkkLFoQxiWH7noLrvDEiYFs4uVEye2W1H2UtN4zJhpijGs
     laptop-node = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFdax43pE64WStL3fiIJamI+WqXiWqgk+p0mEwrFEDyY";
+
+    # did:key:z6MknUx5zFKTEEnWfaVwWHGE7GshBez84K3gKH6t2DHCCrmb
     server-node = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHdMWeC00kWnh6YkeU0NS/yz9Oti06+reSzZG7l/E8Hm";
   };
 }
