@@ -9,7 +9,7 @@
       user = {
         name = "oabragh";
         email = "oabragh@outlook.com";
-        signingkey = keys.users.oabragh-laptop;
+        signingkey = keys.radicle.laptop-node;
       };
 
       commit.gpgsign = true;
