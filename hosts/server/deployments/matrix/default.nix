@@ -26,7 +26,7 @@ in
   networking.firewall.allowedTCPPorts = [ 8448 ];
 
   services.matrix-tuwunel = {
-    enable = false;
+    enable = true;
     settings.global = {
       server_name = config.domain;
       address = [
