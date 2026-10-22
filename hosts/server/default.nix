@@ -5,6 +5,8 @@
     ./modules
   ];
 
+  services.qemuGuest.enable = true;
+
   networking = {
     hostName = "server";
 
@@ -14,9 +16,7 @@
     ];
   };
 
-  domain = "oabragh.dedyn.io";
-
-  services.qemuGuest.enable = true;
+  domain = "oabragh.com";
 
   system.stateVersion = "26.05";
 }

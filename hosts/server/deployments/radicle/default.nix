@@ -35,8 +35,8 @@ in
 
     settings = {
       node = {
-        alias = "code.${config.domain}";
-        externalAddresses = [ "code.${config.domain}:${toString radicleSeedPort}" ];
+        alias = "seed.${config.domain}";
+        externalAddresses = [ "seed.${config.domain}:${toString radicleSeedPort}" ];
         seedingPolicy = {
           default = "block";
           scope = "all";
@@ -46,8 +46,7 @@ in
   };
 
   services.nginx.virtualHosts = {
-    # TODO: seed. or git. is a better fit
-    "code.${config.domain}" = {
+    "seed.${config.domain}" = {
       enableACME = true;
       forceSSL = true;
 
@@ -68,7 +67,7 @@ in
     };
   };
 
-  security.acme.certs."code.${config.domain}" = {
+  security.acme.certs."seed.${config.domain}" = {
     group = "nginx";
     reloadServices = [ "nginx.service" ];
   };

@@ -6,7 +6,7 @@ in
   services.postgresql.enable = true;
 
   services.forgejo = {
-    enable = true;
+    enable = false;
     lfs.enable = true;
 
     database.type = "postgres";

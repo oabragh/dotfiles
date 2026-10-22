@@ -25,6 +25,7 @@ in
       rnote
       loupe
       nautilus
+      foliate
     ];
 
   # temporally here

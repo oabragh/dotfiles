@@ -158,14 +158,10 @@ in
     port = bulwarkPort;
 
     settings = {
-      jmapServerUrl = "https://jmap.${domain}";
+      jmapServerUrl = "https://mx.${domain}";
       sessionSecretFile = config.age.secrets."bulwark-session".path;
       stalwartFeaturesEnabled = true;
       logLevel = "info";
-
-      # branding = {
-      #   appName = "Mail";
-      # };
 
       policies = {
         features.sidebarAppsEnabled = false;
@@ -177,7 +173,7 @@ in
   };
 
   services.nginx.virtualHosts = {
-    "jmap.${domain}" = {
+    "mx.${domain}" = {
       enableACME = true;
       forceSSL = true;
       serverAliases = [
