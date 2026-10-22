@@ -85,16 +85,16 @@ in
         object = "Certificate";
         matchOn = [ "subjectAlternativeNames" ];
         value.cert-main = {
-          subjectAlternativeNames = "mail.${domain}";
+          subjectAlternativeNames = "mx.${domain}";
 
           certificate = {
             "@type" = "File";
-            filePath = "/var/lib/acme/mail.${domain}/fullchain.pem";
+            filePath = "/var/lib/acme/mx.${domain}/fullchain.pem";
           };
 
           privateKey = {
             "@type" = "File";
-            filePath = "/var/lib/acme/mail.${domain}/key.pem";
+            filePath = "/var/lib/acme/mx.${domain}/key.pem";
           };
         };
       }
@@ -130,7 +130,7 @@ in
         object = "SystemSettings";
         value = {
           defaultDomainId = "#dom-main";
-          defaultHostname = "mail.${domain}";
+          defaultHostname = "mx.${domain}";
           defaultCertificateId = "#cert-main";
         };
       }
@@ -209,7 +209,7 @@ in
 
   users.users.stalwart.extraGroups = [ "nginx" ];
 
-  security.acme.certs."mail.${domain}" = {
+  security.acme.certs."mx.${domain}" = {
     group = "nginx";
     reloadServices = [ "stalwart.service" ];
   };
