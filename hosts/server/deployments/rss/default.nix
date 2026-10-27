@@ -5,8 +5,6 @@ in
 {
   age.secrets."miniflux-admin" = {
     file = "${self}/secrets/server/miniflux-admin.env.age";
-    owner = "miniflux";
-    group = "miniflux";
   };
 
   services.miniflux = {
