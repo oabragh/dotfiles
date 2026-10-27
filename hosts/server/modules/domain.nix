@@ -15,7 +15,7 @@
       bulwark = 3005;
       radicleHttpd = 3006;
       matrixServer = 3007;
-      socialServer = 3008
+      socialServer = 3008;
       matrixFederation = 8448;
       radicleSeed = 8776;
     };
