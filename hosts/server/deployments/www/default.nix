@@ -12,16 +12,16 @@ in
       serverAliases = [ "www.${config.domain}" ];
 
       locations = {
-        "^~ /.well-known/webfinger/" = {
-          proxyPass = "http://127.0.0.1:${toString socialServerPort}";
+        "= /.well-known/webfinger" = {
+          return = "301 https://social.${config.domain}$request_uri";
         };
 
-        "^~ /.well-known/nodeinfo/" = {
-          proxyPass = "http://127.0.0.1:${toString socialServerPort}";
+        "= /.well-known/nodeinfo" = {
+          return = "301 https://social.${config.domain}$request_uri";
         };
 
-        "^~ /.well-known/host-meta/" = {
-          proxyPass = "http://127.0.0.1:${toString socialServerPort}";
+        "= /.well-known/host-meta" = {
+          return = "301 https://social.${config.domain}$request_uri";
         };
 
         "^~ /.well-known/matrix/" = {
