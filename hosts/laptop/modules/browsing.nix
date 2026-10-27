@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  policies = builtins.toJSON {
+  bravePolicies = {
     DnsOverHttpsMode = "off";
 
     TorDisabled = 1;
@@ -14,14 +14,13 @@ let
     BraveP3AEnabled = 0;
     BraveStatsPingEnabled = 0;
     BraveVPNDisabled = 1;
-
-    # TODO: policies ...
   };
 in
 {
   environment.systemPackages = [
     pkgs.brave
+    pkgs.tor-browser
   ];
 
-  environment.etc."brave/policies/managed/config.json".text = policies;
+  environment.etc."brave/policies/managed/config.json".text = builtins.toJSON bravePolicies;
 }

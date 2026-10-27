@@ -1,10 +1,10 @@
-{ config, ... }:
+{ config, self, ... }:
 let
-  minifluxPort = 3002;
+  minifluxPort = config.modules.server.ports.miniflux;
 in
 {
   age.secrets."miniflux-admin" = {
-    file = ../../../../secrets/server/miniflux-admin.env.age;
+    file = "${self}/secrets/server/miniflux-admin.env.age";
     owner = "miniflux";
     group = "miniflux";
   };
@@ -25,6 +25,9 @@ in
   services.nginx.virtualHosts."rss.${config.domain}" = {
     enableACME = true;
     forceSSL = true;
-    locations."/".proxyPass = "http://127.0.0.1:${toString minifluxPort}";
+
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:${toString minifluxPort}";
+    };
   };
 }

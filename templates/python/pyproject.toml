@@ -2,7 +2,7 @@
 name = "hello_world"
 version = "0.1.0"
 description = "Simple hello world"
-authors = [{ name = "Omar Abragh", email = "oabragh@outlook.com" }]
+authors = [{ name = "Omar Abragh", email = "contact@oabragh.com" }]
 readme = "README.md"
 requires-python = ">=3.14"
 

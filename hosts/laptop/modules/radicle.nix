@@ -7,9 +7,10 @@
 }:
 let
   seeds = {
+    server = "z6MknUx5zFKTEEnWfaVwWHGE7GshBez84K3gKH6t2DHCCrmb@seed.oabragh.com:8776";
+
     iris = "z6MkrLMMsiPWUcNPHcRajuMi9mDfYckSoJyPwwnknocNYPm7@iris.radicle.network:58776";
     rosa = "z6Mkmqogy2qEM2ummccUthFEaaHvyYmYBYh3dbe9W4ebScxo@rosa.radicle.network:58776";
-    server = "z6MknUx5zFKTEEnWfaVwWHGE7GshBez84K3gKH6t2DHCCrmb@code.oabragh.dedyn.io:3007";
     at = "z6MkjDYUKMUeY58Vtr8dGJrHRvnTfjKWVGCBYJDVTHXsXzm5@seed.radicle.at:8776";
   };
 
@@ -84,13 +85,13 @@ in
   ];
 
   age.secrets.radicle = {
-    file = ../../../../secrets/laptop/radicle.age;
+    file = "${self}/secrets/laptop/radicle.age";
     owner = "oabragh";
     group = "users";
   };
 
   age.secrets.radicle-passphrase = {
-    file = ../../../../secrets/laptop/radicle-passphrase.env.age;
+    file = "${self}/secrets/laptop/radicle-passphrase.env.age";
     owner = "oabragh";
     group = "users";
   };
@@ -101,7 +102,6 @@ in
       value = radicleConfig;
     };
 
-    # TODO: move this to keepass/ssh-agent
     files.".radicle/keys/radicle".source = config.age.secrets.radicle.path;
     files.".radicle/keys/radicle.pub".text = keys.radicle.laptop-node;
   };

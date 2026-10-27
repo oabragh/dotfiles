@@ -1,15 +1,18 @@
 { config, keys, ... }:
 let
-  radicleSeedPort = 3007;
-  radicleHttpdPort = 3008;
+  ports = config.modules.server.ports;
+  radicleSeedDomain = "seed.${config.domain}";
+  radicleSeedPort = ports.radicleSeed;
+  radicleHttpdPort = ports.radicleHttpd;
 
   aliases = {
     dotfiles = "rad:z39hwsxW4pZF6VPtAvg1K2x3ZDqHu";
+    iris = "rad:z2uS3fcaBfRS538FL5fLVk17UACws";
   };
 in
 {
   age.secrets.radicle = {
-    file = ../../../../secrets/server/radicle.age;
+    file = "${self}/secrets/server/radicle.age";
     owner = "radicle";
     group = "radicle";
   };
@@ -17,8 +20,8 @@ in
   services.radicle = {
     enable = true;
 
-    privateKey = config.age.secrets.radicle.path;
     publicKey = keys.radicle.server-node;
+    privateKey = config.age.secrets.radicle.path;
 
     node = {
       listenAddress = "[::]";
@@ -35,8 +38,8 @@ in
 
     settings = {
       node = {
-        alias = "seed.${config.domain}";
-        externalAddresses = [ "seed.${config.domain}:${toString radicleSeedPort}" ];
+        alias = radicleSeedDomain;
+        externalAddresses = [ "${radicleSeedDomain}:${toString radicleSeedPort}" ];
         seedingPolicy = {
           default = "block";
           scope = "all";
@@ -46,29 +49,18 @@ in
   };
 
   services.nginx.virtualHosts = {
-    "seed.${config.domain}" = {
+    "${radicleSeedDomain}" = {
       enableACME = true;
       forceSSL = true;
 
       locations."/" = {
         proxyPass = "http://127.0.0.1:${toString radicleHttpdPort}";
         proxyWebsockets = true;
-        extraConfig = ''
-          proxy_set_header X-Forwarded-Proto http;
-          client_max_body_size 500m;
-        '';
-
-        recommendedProxySettings = false;
       };
 
       locations."= /" = {
         return = "302 https://${config.domain}/repos";
       };
     };
-  };
-
-  security.acme.certs."seed.${config.domain}" = {
-    group = "nginx";
-    reloadServices = [ "nginx.service" ];
   };
 }

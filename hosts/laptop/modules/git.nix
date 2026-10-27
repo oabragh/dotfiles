@@ -8,7 +8,7 @@
     config = {
       user = {
         name = "oabragh";
-        email = "oabragh@outlook.com";
+        email = "contact@oabragh.com";
         signingkey = keys.radicle.laptop-node;
       };
 

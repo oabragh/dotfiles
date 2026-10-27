@@ -5,6 +5,8 @@
     ./radicle
     ./rss
     ./matrix
+    ./social
+    ./www
   ];
 
   security.acme = {

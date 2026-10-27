@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  internalPort = 3001;
+  internalPort = config.modules.server.ports.forgejo;
 in
 {
   services.postgresql.enable = true;

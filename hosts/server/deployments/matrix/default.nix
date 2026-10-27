@@ -4,12 +4,14 @@
 }:
 
 let
+  ports = config.modules.server.ports;
   matrixDomain = "matrix.${config.domain}";
-  matrixServerPort = 3009;
+  matrixServerPort = ports.matrixServer;
+  matrixFederationPort = ports.matrixFederation;
 in
 {
   age.secrets."registration-token" = {
-    file = ../../../../secrets/server/matrix-registration-token.age;
+    file = "${self}/secrets/server/matrix-registration-token.age";
     owner = "tuwunel";
     group = "tuwunel";
   };
@@ -34,7 +36,10 @@ in
         "::1"
       ];
       port = [ matrixServerPort ];
+
       allow_federation = true;
+      allow_registration = false;
+
       new_user_displayname_suffix = "";
 
       well_known = {
@@ -43,21 +48,15 @@ in
       };
 
       ip_source = "x_real_ip";
+      max_request_size = 104857600;
 
-      allow_registration = true;
       registration_token_file = config.age.secrets."registration-token".path;
     };
   };
 
   services.nginx.virtualHosts = {
-    "${config.domain}" = {
-      # TODO: put this somewhere else when you host website
-      enableACME = true;
-      forceSSL = true;
-
-      locations."^~ /.well-known/matrix/" = {
-        proxyPass = "http://127.0.0.1:${toString matrixServerPort}";
-      };
+    "${config.domain}".locations."^~ /.well-known/matrix/" = {
+      proxyPass = "http://127.0.0.1:${toString matrixServerPort}";
     };
 
     "${matrixDomain}" = {

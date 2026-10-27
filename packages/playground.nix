@@ -42,9 +42,5 @@ pkgs.buildFHSEnv {
       cowsay
     ]);
 
-  profile = ''
-    echo -e "Welcome to the Upside Down..." | cowsay -f sus
-  '';
-
   runScript = "${pkgs.fish}/bin/fish";
 }

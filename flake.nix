@@ -28,6 +28,7 @@
 
               specialArgs = {
                 inherit inputs;
+                self = inputs.self;
                 keys = import ./secrets/keys.nix;
               };
             };

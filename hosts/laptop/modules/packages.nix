@@ -26,6 +26,7 @@ in
       loupe
       nautilus
       foliate
+      papers
     ];
 
   # temporally here

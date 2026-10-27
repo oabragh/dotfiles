@@ -1,9 +1,10 @@
 { config, ... }:
 let
   domain = config.domain;
-  stalwartMgmtPort = 8080;
-  stalwartJmapPort = 3004;
-  bulwarkPort = 3005;
+  ports = config.modules.server.ports;
+  stalwartMgmtPort = ports.stalwartMgmt;
+  stalwartJmapPort = ports.stalwartJmap;
+  bulwarkPort = ports.bulwark;
 in
 {
   imports = [
@@ -12,13 +13,13 @@ in
 
   age.secrets = {
     "stalwart-admin" = {
-      file = ../../../../secrets/server/stalwart-admin.env.age;
+      file = "${self}/secrets/server/stalwart-admin.env.age";
       owner = "stalwart";
       group = "stalwart";
     };
 
     "bulwark-session" = {
-      file = ../../../../secrets/server/bulwark-session.age;
+      file = "${self}/secrets/server/bulwark-session.age";
       owner = "bulwark";
       group = "bulwark";
     };
@@ -208,9 +209,5 @@ in
   };
 
   users.users.stalwart.extraGroups = [ "nginx" ];
-
-  security.acme.certs."mx.${domain}" = {
-    group = "nginx";
-    reloadServices = [ "stalwart.service" ];
-  };
+  security.acme.certs."mx.${domain}".reloadServices = [ "stalwart.service" ];
 }
