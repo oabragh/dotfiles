@@ -56,10 +56,6 @@ in
   };
 
   services.nginx.virtualHosts = {
-    "${config.domain}".locations."^~ /.well-known/matrix/" = {
-      proxyPass = "http://127.0.0.1:${toString matrixServerPort}";
-    };
-
     "${matrixDomain}" = {
       enableACME = true;
       forceSSL = true;

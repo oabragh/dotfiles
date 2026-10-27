@@ -20,18 +20,6 @@ in
   };
 
   services.nginx.virtualHosts = {
-    "${config.domain}".locations."^~ /.well-known/webfinger/" = {
-      proxyPass = "http://127.0.0.1:${toString socialServerPort}";
-    };
-
-    "${config.domain}".locations."^~ /.well-known/nodeinfo/" = {
-      proxyPass = "http://127.0.0.1:${toString socialServerPort}";
-    };
-
-    "${config.domain}".locations."^~ /.well-known/host-meta/" = {
-      proxyPass = "http://127.0.0.1:${toString socialServerPort}";
-    };
-
     "${socialDomain}" = {
       enableACME = true;
       forceSSL = true;
