@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   services.nginx.virtualHosts = {
     "${config.domain}" = {
