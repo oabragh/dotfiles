@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, self, ... }:
 let
   domain = config.domain;
   ports = config.modules.server.ports;

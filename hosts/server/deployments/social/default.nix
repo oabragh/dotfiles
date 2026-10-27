@@ -1,4 +1,4 @@
-{ ... }:
+{ config, self, ... }:
 let
   ports = config.modules.server.ports;
   socialDomain = "social.${config.domain}";

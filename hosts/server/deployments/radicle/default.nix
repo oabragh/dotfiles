@@ -1,4 +1,4 @@
-{ config, keys, ... }:
+{ config, keys, self, ... }:
 let
   ports = config.modules.server.ports;
   radicleSeedDomain = "seed.${config.domain}";
